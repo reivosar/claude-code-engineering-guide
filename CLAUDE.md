@@ -44,6 +44,152 @@ Each development phase requires mathematical proof of compliance before proceedi
 - **Rollback Ready**: Every deployment must include automatic rollback capability
 - **Gate Condition**: deployment_method = automated_pipeline_only
 
+# OBJECT-ORIENTED EXERCISE RULES (9 Principles)
+
+## Mandatory Coding Constraints
+1. **One Level of Indentation per Method**: Break down complex logic using Extract Method
+2. **No else Keyword**: Use early returns, guard clauses, and polymorphism instead
+3. **Wrap All Primitives and Strings**: Create Value Objects for domain concepts
+4. **First Class Collections**: Encapsulate collections in dedicated classes
+5. **One Dot per Line**: Avoid method chaining, use intermediate variables
+6. **Don't Abbreviate**: Use meaningful, intention-revealing names
+7. **Keep All Entities Small**: Maximum 50 lines per class, single responsibility
+8. **No Classes with More Than Two Instance Variables**: Use composition and delegation
+9. **No Getters/Setters/Properties**: Follow "Tell, Don't Ask" principle
+
+## Rule Implementation Examples
+
+### Rule 1: One Level of Indentation
+```typescript
+// ❌ Violation - Multiple indentation levels
+processOrder(order: Order): void {
+  if (order.isValid()) {
+    if (order.isPaid()) {
+      if (order.hasItems()) {
+        // process logic
+      }
+    }
+  }
+}
+
+// ✅ Compliant - Single level with early returns
+processOrder(order: Order): void {
+  if (!order.isValid()) return;
+  if (!order.isPaid()) return;
+  if (!order.hasItems()) return;
+  
+  executeOrderProcessing(order);
+}
+```
+
+### Rule 2: No else Keyword
+```typescript
+// ❌ Violation - Using else
+calculateDiscount(customer: Customer): number {
+  if (customer.isPremium()) {
+    return 0.1;
+  } else {
+    return 0.05;
+  }
+}
+
+// ✅ Compliant - Early return
+calculateDiscount(customer: Customer): number {
+  if (customer.isPremium()) return 0.1;
+  return 0.05;
+}
+```
+
+### Rule 3: Wrap All Primitives
+```typescript
+// ❌ Violation - Primitive obsession
+class Customer {
+  constructor(private email: string, private age: number) {}
+}
+
+// ✅ Compliant - Wrapped primitives
+class Email {
+  constructor(private value: string) {
+    if (!this.isValid(value)) throw new Error('Invalid email');
+  }
+  private isValid(email: string): boolean { /* validation */ }
+}
+
+class Age {
+  constructor(private value: number) {
+    if (value < 0 || value > 150) throw new Error('Invalid age');
+  }
+}
+
+class Customer {
+  constructor(private email: Email, private age: Age) {}
+}
+```
+
+### Rule 4: First Class Collections
+```typescript
+// ❌ Violation - Raw collection
+class Order {
+  constructor(private items: OrderItem[]) {}
+  
+  getTotalPrice(): number {
+    return this.items.reduce((sum, item) => sum + item.price, 0);
+  }
+}
+
+// ✅ Compliant - First class collection
+class OrderItems {
+  constructor(private items: OrderItem[]) {}
+  
+  getTotalPrice(): number {
+    return this.items.reduce((sum, item) => sum + item.price, 0);
+  }
+  
+  addItem(item: OrderItem): void {
+    this.items.push(item);
+  }
+}
+
+class Order {
+  constructor(private items: OrderItems) {}
+  
+  getTotalPrice(): number {
+    return this.items.getTotalPrice();
+  }
+}
+```
+
+### Rule 9: No Getters/Setters
+```typescript
+// ❌ Violation - Data exposure
+class BankAccount {
+  private balance: number = 0;
+  
+  getBalance(): number { return this.balance; }
+  setBalance(amount: number): void { this.balance = amount; }
+}
+
+// ✅ Compliant - Behavior focus
+class BankAccount {
+  private balance: number = 0;
+  
+  deposit(amount: Money): void {
+    this.balance += amount.getValue();
+  }
+  
+  withdraw(amount: Money): void {
+    if (this.balance < amount.getValue()) {
+      throw new Error('Insufficient funds');
+    }
+    this.balance -= amount.getValue();
+  }
+  
+  canAfford(amount: Money): boolean {
+    return this.balance >= amount.getValue();
+  }
+}
+```
+
 # MARTIN FOWLER'S ENGINEERING PRINCIPLES
 
 ## Refactoring Discipline
