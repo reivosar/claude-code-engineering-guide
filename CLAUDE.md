@@ -11,6 +11,13 @@ Claude Codeを使用して、効率的かつ高品質なソフトウェア開発
 
 ## 📋 目次
 
+### 00. 🤖 Claude Code 絶対遵守ガイド
+- [01. ワークフロー](docs/00.claude-guidelines/01.workflow.md)
+- [02. 効果的な使い方](docs/00.claude-guidelines/02.claude-code-usage.md)
+- [03. プロンプトエンジニアリング](docs/00.claude-guidelines/03.prompt-engineering.md)
+- [04. ベストプラクティス](docs/00.claude-guidelines/04.best-practices.md)
+- [05. トラブルシューティング](docs/00.claude-guidelines/05.troubleshooting.md)
+
 ### 01. 📋 要件定義
 - [01. 要件定義](docs/01.requirements/01.requirements-definition.md)
 
@@ -24,15 +31,11 @@ Claude Codeを使用して、効率的かつ高品質なソフトウェア開発
 ### 04. 🧪 テスト
 - [01. テスト戦略](docs/04.testing/01.testing-strategy.md)
 
-### 05. 🚀 デプロイ
-- [01. デプロイメント戦略](docs/05.deployment/01.deployment-strategy.md)
+### 05. 📝 レビュー
+- [01. コードレビュー](docs/06.review/01.code-review.md)
 
-### 99. 🤖 Claude Codeガイド
-- [01. ワークフロー](docs/99.claude-guide/01.workflow.md)
-- [02. 効果的な使い方](docs/99.claude-guide/02.claude-code-usage.md)
-- [03. プロンプトエンジニアリング](docs/99.claude-guide/03.prompt-engineering.md)
-- [04. ベストプラクティス](docs/99.claude-guide/04.best-practices.md)
-- [05. トラブルシューティング](docs/99.claude-guide/05.troubleshooting.md)
+### 06. 🚀 デプロイ
+- [01. デプロイメント戦略](docs/07.deployment/01.deployment-strategy.md)
 
 ---
 
@@ -68,6 +71,12 @@ project-root/
 
 ```
 docs/
+├── 00.claude-guidelines/      # Claude Code絶対遵守ガイド
+│   ├── 01.workflow.md
+│   ├── 02.claude-code-usage.md
+│   ├── 03.prompt-engineering.md
+│   ├── 04.best-practices.md
+│   └── 05.troubleshooting.md
 ├── 01.requirements/           # 要件定義
 │   └── 01.requirements-definition.md
 ├── 02.design/                # 設計
@@ -77,14 +86,10 @@ docs/
 │   └── 02.security-guidelines.md
 ├── 04.testing/               # テスト
 │   └── 01.testing-strategy.md
-├── 05.deployment/            # デプロイ
-│   └── 01.deployment-strategy.md
-└── 99.claude-guide/          # Claude Codeガイド
-    ├── 01.workflow.md
-    ├── 02.claude-code-usage.md
-    ├── 03.prompt-engineering.md
-    ├── 04.best-practices.md
-    └── 05.troubleshooting.md
+├── 06.review/                # レビュー
+│   └── 01.code-review.md
+└── 07.deployment/            # デプロイ
+    └── 01.deployment-strategy.md
 ```
 
 ---
@@ -95,7 +100,7 @@ docs/
 2. **プロジェクト情報を更新**
 3. **詳細なガイドを参照して開発開始**
 
-各セクションは独立して読むことができますが、初めての方は [01. 要件定義](docs/01.requirements/01.requirements-definition.md) から順番に読み進めることをお勧めします。Claude Codeの使い方については [Claude Codeガイド](docs/99.claude-guide/01.workflow.md) を参照してください。
+各セクションは独立して読むことができますが、初めての方は [00. Claude Code絶対遵守ガイド](docs/00.claude-guidelines/01.workflow.md) を必ず読んでから、[01. 要件定義](docs/01.requirements/01.requirements-definition.md) から順番に読み進めることをお勧めします。
 
 ---
 
