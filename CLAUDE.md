@@ -12,6 +12,7 @@ Claude Codeを使用して、効率的かつ高品質なソフトウェア開発
 ## 📋 目次
 
 ### 00. 🤖 Claude Code 絶対遵守ガイド
+- [00. 🔒 絶対遵守規範（ゼロ・トラスト版）](docs/00.claude-guidelines/00.absolute-compliance-code.md)
 - [01. ワークフロー](docs/00.claude-guidelines/01.workflow.md)
 - [02. 効果的な使い方](docs/00.claude-guidelines/02.claude-code-usage.md)
 - [03. プロンプトエンジニアリング](docs/00.claude-guidelines/03.prompt-engineering.md)
@@ -72,6 +73,7 @@ project-root/
 ```
 docs/
 ├── 00.claude-guidelines/      # Claude Code絶対遵守ガイド
+│   ├── 00.absolute-compliance-code.md
 │   ├── 01.workflow.md
 │   ├── 02.claude-code-usage.md
 │   ├── 03.prompt-engineering.md
@@ -100,7 +102,7 @@ docs/
 2. **プロジェクト情報を更新**
 3. **詳細なガイドを参照して開発開始**
 
-各セクションは独立して読むことができますが、初めての方は [00. Claude Code絶対遵守ガイド](docs/00.claude-guidelines/01.workflow.md) を必ず読んでから、[01. 要件定義](docs/01.requirements/01.requirements-definition.md) から順番に読み進めることをお勧めします。
+各セクションは独立して読むことができますが、**必ず** [00. 絶対遵守規範（ゼロ・トラスト版）](docs/00.claude-guidelines/00.absolute-compliance-code.md) を最初に読み、完全に理解してから、[01. 要件定義](docs/01.requirements/01.requirements-definition.md) から順番に読み進めることを強く要求します。
 
 ---
 
