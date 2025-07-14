@@ -1,90 +1,54 @@
 ---
 risk-level: R1
 maintainer: @dev-team
-last-reviewed: 2025-07-14
-purpose: Detailed coding standards and OO Exercise rules implementation
+last-reviewed: 2025-07-15
+purpose: Language‑agnostic coding standards; language‑specific details defer to respective community best practices
 ---
 
-# Code Style Guidelines
+# Code Style Guidelines (Language‑Agnostic Core)
 
-## Object-Oriented Exercise Rules (Detailed)
+## Core Principles — Applicable to Any Programming Language
 
-### Rule 1: One Level of Indentation per Method
-- Break down complex logic using Extract Method pattern
-- Use early returns and guard clauses
-- Maximum nesting level: 1
+| # | Principle | Why it matters |
+|---|-----------|----------------|
+| 1 | **Readability over cleverness** | Code is read far more than it is written; optimize for the next engineer. |
+| 2 | **Fail fast & validate early** | Detect invalid input/state at the boundary; simplify downstream logic. |
+| 3 | **Limit complexity** | Target cyclomatic complexity ≤ 10 per function/method to keep reasoning tractable. |
+| 4 | **Single responsibility** | One reason to change → easier testing & parallel development. |
+| 5 | **Small units** | Aim ≤ 50 logical lines per function, ≤ 400 per file/module. |
+| 6 | **Immutability preferred** | Reduces shared‑state bugs; explicit mutation zones if unavoidable. |
+| 7 | **Clear, intention‑revealing names** | No unexplained abbreviations; domain terms allowed. |
+| 8 | **Early returns / guard clauses** | Flatten nesting; highlight exceptional paths first. |
+| 9 | **Consistent error handling** | Use the idiomatic pattern of the language (exceptions, Result, Either, etc.). |
+| 10 | **Test‑driven mindset** | Write tests along with code; follow risk‑stratified coverage table in TESTING.md. |
 
-**Examples:**
-```typescript
-// ❌ Violation - Multiple indentation levels
-processOrder(order: Order): void {
-  if (order.isValid()) {
-    if (order.isPaid()) {
-      if (order.hasItems()) {
-        // process logic
-      }
-    }
-  }
-}
+**Remember**: these rules are descriptive, not prescriptive dogma—when a well‑documented exception yields measurable benefit, capture it in an ADR and proceed.
 
-// ✅ Compliant - Single level with early returns
-processOrder(order: Order): void {
-  if (!order.isValid()) return;
-  if (!order.isPaid()) return;
-  if (!order.hasItems()) return;
-  
-  executeOrderProcessing(order);
-}
-```
+## Language‑Specific Layer
 
-### Rule 2: No else Keywords
-- Use early returns, guard clauses, and polymorphism
-- Replace conditional logic with strategy pattern when complex
+- **Follow the primary community style guide** for the language (e.g., PEP 8 for Python, Go FMT, Rust fmt, Google Java, StandardJS, etc.).
+- **Auto‑format and lint** in the pre‑commit hook (eslint, flake8, golangci‑lint, rustfmt + clippy, …).
+- **Use idiomatic constructs**: e.g., pattern matching in Scala/Rust, list comprehensions in Python, pipelines in Elixir.
+- **Leverage official tooling** for dependency management, build, and docs.
 
-### Rule 3: Wrap All Primitives
-- Create Value Objects for domain concepts
-- Exception: Simple DTOs and internal data structures
-- Enforce validation at construction time
-
-### Rule 4: First-Class Collections
-- Encapsulate collections in dedicated classes
-- Provide domain-specific methods for collection operations
-- Hide internal collection implementation
-
-### Rule 5: One Dot per Line
-- Avoid method chaining for better debugging
-- Use intermediate variables with meaningful names
-- Exception: Fluent interfaces for builders
-
-### Rule 6: Don't Abbreviate
-- Use intention-revealing names
-- Prefer verbosity over brevity
-- Exception: Well-known domain abbreviations
-
-### Rule 7: Keep All Entities Small
-- Maximum 50 lines per class OR cyclomatic complexity ≤10
-- Single responsibility principle
-- Extract classes when responsibilities diverge
-
-### Rule 8: No Classes with More Than Two Instance Variables
-- Use composition and delegation
-- Exception: Aggregate root pattern with ADR approval
-- Consider Value Objects for grouped data
-
-### Rule 9: No Getters/Setters/Properties
-- Follow "Tell, Don't Ask" principle
-- Expose behavior, not data
-- Exception: Simple data containers and framework requirements
+If a language requires stricter or divergent conventions, create a short overlay file in `docs/LANGUAGE_OVERRIDES/<language>.md` that references the canonical guide rather than duplicating it.
 
 ## Pragmatic Exceptions
 
-### ADR Required Exceptions
-- Aggregate root patterns with complex state
-- Framework integration requirements
-- Performance-critical sections with profiling data
-- Legacy system integration boundaries
+| Scenario | Permitted Deviation | Requirements |
+|----------|-------------------|--------------|
+| **Generated code** (ORM, proto, gRPC stubs) | Formatting & complexity rules waived | Keep in `generated/` directory; never modify by hand. |
+| **Performance‑critical path** | May break immutability or complexity limits | Provide profiling data + ADR sign‑off. |
+| **Legacy integration wrapper** | Naming/structure may mirror upstream API | Mark with `@legacy‑bridge` annotation + unit tests that pin expected behavior. |
 
-### Automatic Exceptions
-- Generated code (ORMs, serialization)
-- Third-party library interfaces
-- Configuration objects and DTOs
+## Contributing Checklist
+
+1. **Code passes formatter/linter** with zero errors.
+2. **Complexity check** (cyclo, radon, etc.) within thresholds or ADR attached.
+3. **Risk‑level tests** meet coverage/mutation targets.
+4. **Public APIs & domain terms** documented.
+5. **No TODO/FIXME** left in committed code.
+
+---
+
+**Quality is a habit, not an act.**

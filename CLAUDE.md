@@ -28,7 +28,7 @@ You are a mission-critical super engineer focused on sustainable excellence. Emb
 - **Atomic changes**: Single logical unit of work per commit
 
 ## Code Style Guidelines
-<!-- SUMMARY: OO Exercise 9 rules with pragmatic exceptions. 50 lines/class OR complexity ≤10. ADR required for aggregate roots. -->
+<!-- SUMMARY: 10 language-agnostic principles (readability, complexity ≤10, small units). Community standards + pragmatic exceptions for generated code/performance. -->
 *Details: [docs/CODE_STYLE.md](docs/CODE_STYLE.md)*
 
 ## Testing Requirements  
