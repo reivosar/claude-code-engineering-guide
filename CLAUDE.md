@@ -11,23 +11,23 @@ Claude Codeを使用して、効率的かつ高品質なソフトウェア開発
 
 ## 📋 目次
 
-### 🚀 Getting Started
-- [Claude Codeの効果的な使い方](docs/getting-started/claude-code-usage.md)
-- [プロンプトエンジニアリング](docs/getting-started/prompt-engineering.md)
+### 01. 🚀 Getting Started
+- [01. Claude Codeの効果的な使い方](docs/01.getting-started/01.claude-code-usage.md)
+- [02. プロンプトエンジニアリング](docs/01.getting-started/02.prompt-engineering.md)
 
-### 💻 Development
-- [開発ワークフロー](docs/development/workflow.md)
-- [コーディング規約](docs/development/coding-standards.md)
+### 02. 💻 Development
+- [01. 開発ワークフロー](docs/02.development/01.workflow.md)
+- [02. コーディング規約](docs/02.development/02.coding-standards.md)
 
-### 🔒 Security
-- [セキュリティガイドライン](docs/security/overview.md)
+### 03. 🔒 Security
+- [01. セキュリティガイドライン](docs/03.security/01.overview.md)
 
-### 🧪 Testing
-- [テスト戦略](docs/testing/overview.md)
+### 04. 🧪 Testing
+- [01. テスト戦略](docs/04.testing/01.overview.md)
 
-### 🌟 Best Practices
-- [ベストプラクティス集](docs/best-practices/overview.md)
-- [トラブルシューティング](docs/best-practices/troubleshooting.md)
+### 05. 🌟 Best Practices
+- [01. ベストプラクティス集](docs/05.best-practices/01.overview.md)
+- [02. トラブルシューティング](docs/05.best-practices/02.troubleshooting.md)
 
 ---
 
@@ -63,19 +63,19 @@ project-root/
 
 ```
 docs/
-├── getting-started/       # 基本的な使い方
-│   ├── claude-code-usage.md
-│   └── prompt-engineering.md
-├── development/          # 開発プロセス
-│   ├── workflow.md
-│   └── coding-standards.md
-├── security/            # セキュリティ
-│   └── overview.md
-├── testing/             # テスト戦略
-│   └── overview.md
-└── best-practices/      # ベストプラクティス
-    ├── overview.md
-    └── troubleshooting.md
+├── 01.getting-started/         # 基本的な使い方
+│   ├── 01.claude-code-usage.md
+│   └── 02.prompt-engineering.md
+├── 02.development/            # 開発プロセス
+│   ├── 01.workflow.md
+│   └── 02.coding-standards.md
+├── 03.security/              # セキュリティ
+│   └── 01.overview.md
+├── 04.testing/               # テスト戦略
+│   └── 01.overview.md
+└── 05.best-practices/        # ベストプラクティス
+    ├── 01.overview.md
+    └── 02.troubleshooting.md
 ```
 
 ---
@@ -86,7 +86,7 @@ docs/
 2. **プロジェクト情報を更新**
 3. **詳細なガイドを参照して開発開始**
 
-各セクションは独立して読むことができますが、初めての方は [Claude Codeの効果的な使い方](docs/getting-started/claude-code-usage.md) から始めることをお勧めします。
+各セクションは独立して読むことができますが、初めての方は [01. Claude Codeの効果的な使い方](docs/01.getting-started/01.claude-code-usage.md) から始めることをお勧めします。
 
 ---
 
