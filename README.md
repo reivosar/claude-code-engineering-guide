@@ -1,74 +1,114 @@
 # Claude Code Engineering Guide
 
-Claude Codeを使用した高品質なソフトウェア開発を実現するための包括的なガイドライン
+Mission-critical software development framework with risk-aware excellence and pragmatic engineering principles.
 
-## 概要
+## Overview
 
-このリポジトリは、Claude Code（Anthropic公式CLI）を最大限に活用して、効率的かつ高品質なソフトウェア開発を行うためのベストプラクティスをまとめたものです。
+This repository provides a comprehensive engineering framework for building production-ready software with Claude Code. It balances strict quality standards with practical development velocity through risk-stratified processes.
 
-## 特徴
+## Key Features
 
-- 🤖 **Claude Code活用法**: 効果的な指示の与え方とコンテキスト共有
-- 💡 **プロンプトエンジニアリング**: 実践的なテンプレート集
-- 🔄 **開発ワークフロー**: 新機能開発からデバッグまでの完全ガイド
-- 📐 **コーディング規約**: TypeScript/React/Node.jsのベストプラクティス
-- 🔒 **セキュリティ**: OWASP準拠のセキュリティガイドライン
-- 🧪 **テスト戦略**: 単体・統合・E2Eテストの実装例
-- 🔧 **トラブルシューティング**: よくある問題と解決方法
+- 🎯 **Risk-Aware Excellence**: R0/R1/R2 classification for appropriate quality gates
+- 👤 **Super Engineer Mindset**: Mission-critical approach with sustainable practices  
+- 🏗️ **Pragmatic Architecture**: OO Exercise rules with sensible exceptions
+- 🔒 **Security-First**: SAST/DAST, regulatory compliance, zero-trust principles
+- 📊 **Business-Aligned**: Quantified impact assessment and ROI tracking
+- 🚀 **Scalable Processes**: From experimental features to production-critical systems
+- 🔄 **Maintainable Documentation**: Structured separation with context efficiency
 
-## 使い方
+## Quick Start
 
-1. このリポジトリをクローンまたはダウンロード
-2. `CLAUDE.md`をプロジェクトのルートディレクトリにコピー
-3. プロジェクトに合わせて内容をカスタマイズ
-4. Claude Codeと一緒に使用して開発を開始
+1. **Copy core configuration**:
+   ```bash
+   cp CLAUDE.md your-project/
+   ```
 
+2. **Optional: Copy detailed guidelines**:
+   ```bash
+   cp -r docs/ your-project/
+   ```
+
+3. **Customize for your stack**: Update tool references and team structure
+
+4. **Start building**: Claude Code will automatically load CLAUDE.md
+
+## Documentation Structure
+
+### Core Framework
+- **[CLAUDE.md](CLAUDE.md)**: Essential principles, risk framework, and process overview
+- **Automatic loading**: Claude Code reads this automatically for context
+
+### Detailed Implementation Guides
+- **[docs/CODE_STYLE.md](docs/CODE_STYLE.md)**: OO Exercise rules with examples and exceptions
+- **[docs/TESTING.md](docs/TESTING.md)**: Risk-stratified testing requirements and procedures
+- **[docs/QUALITY_GATES.md](docs/QUALITY_GATES.md)**: Static analysis, security scans, performance targets
+- **[docs/REPO_FLOW.md](docs/REPO_FLOW.md)**: Branch strategy, PR templates, review processes
+
+## Risk Classification System
+
+| Risk Level | Use Cases | Requirements |
+|------------|-----------|--------------|
+| **R0 (Mission-Critical)** | Payment systems, security features | 100% coverage, 3+ reviewers, stakeholder approval |
+| **R1 (Important)** | Core business logic, user features | 95% coverage, 2+ reviewers, performance testing |
+| **R2 (Experimental)** | A/B tests, research features | 90% coverage, 1 reviewer, basic validation |
+
+## Engineering Principles
+
+### Work Process
+- **Requirements clarity first**: Ask "what exactly should this do?" until crystal clear
+- **Risk assessment**: Classify every change appropriately 
+- **Fail fast, report early**: Surface problems immediately with solutions
+- **Business impact quantification**: Connect technical decisions to business value
+
+### Quality Standards
+- **Zero-tolerance static analysis**: 0 errors, 0 warnings across all risk levels
+- **Differential coverage**: Apply standards to changed code when touching legacy
+- **Security-first**: SAST/DAST scanning, regulatory compliance verification
+- **Performance targets**: Risk-appropriate SLA/SLI monitoring
+
+### Pragmatic Exceptions
+- **Large refactors**: ADR approval process for >400 LOC changes
+- **Legacy integration**: Differential coverage rules for gradual improvement
+- **Hotfix workflows**: Bypass full coverage for critical production fixes
+
+## For Teams
+
+### Developer Experience
+- **Fast feedback**: Pre-commit hooks catch issues early
+- **Clear ownership**: Front-matter metadata defines maintainers
+- **Flexible processes**: Risk-appropriate requirements prevent over-engineering
+
+### Business Alignment
+- **Impact quantification**: PR templates require business justification
+- **ROI tracking**: Performance improvements linked to revenue impact
+- **Stakeholder validation**: R0 changes require business owner sign-off
+
+## Contributing
+
+We welcome improvements to this engineering framework:
+
+1. **For principle changes**: Open an issue for discussion first
+2. **For implementation details**: Submit PR to relevant docs/ file
+3. **For new patterns**: Include risk assessment and business justification
+
+### Contribution Process
 ```bash
-# リポジトリのクローン
-git clone https://github.com/[your-username]/claude-code-engineering-guide.git
-
-# CLAUDE.mdをプロジェクトにコピー
-cp claude-code-engineering-guide/CLAUDE.md your-project/
+git checkout -b improvement/your-change
+# Make focused changes with clear business value
+git commit -m "TYPE: Brief description with impact assessment"
+# Follow our own PR template and review process
 ```
 
-## ガイドの構成
+## License
 
-- **プロジェクト概要**: 技術スタックとディレクトリ構造
-- **Claude Codeの使い方**: 明確な指示とフィードバックループ
-- **プロンプトエンジニアリング**: 機能実装・バグ修正・リファクタリング
-- **開発ワークフロー**: 要件定義から本番デプロイまで
-- **コーディング規約**: 言語別のベストプラクティス
-- **セキュリティ**: 認証・認可・XSS/CSRF対策
-- **テスト**: テストピラミッドと実装例
-- **トラブルシューティング**: デバッグとパフォーマンス改善
+MIT License - see [LICENSE](LICENSE) for details.
 
-## 対象読者
+## Related Resources
 
-- Claude Codeを使用している開発者
-- AIペアプログラミングに興味がある方
-- 開発効率と品質を向上させたいチーム
-- セキュアなコーディングを実践したい方
-
-## コントリビューション
-
-改善提案やフィードバックは大歓迎です！
-
-1. このリポジトリをフォーク
-2. 新しいブランチを作成 (`git checkout -b feature/improvement`)
-3. 変更をコミット (`git commit -m 'Add improvement'`)
-4. ブランチをプッシュ (`git push origin feature/improvement`)
-5. Pull Requestを作成
-
-## ライセンス
-
-MIT License - 詳細は[LICENSE](LICENSE)ファイルを参照してください。
-
-## 関連リンク
-
-- [Claude Code公式ドキュメント](https://docs.anthropic.com/claude-code)
-- [Anthropic公式サイト](https://www.anthropic.com/)
-- [Claude Code GitHub](https://github.com/anthropics/claude-code)
+- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
+- [Anthropic Engineering Blog](https://www.anthropic.com/engineering)
+- [Object-Oriented Exercise Rules](https://williamdurand.fr/2013/06/03/object-calisthenics/)
 
 ---
 
-**注意**: このガイドは定期的に更新されます。最新版は常にこのリポジトリを参照してください。
+**Mission**: Sustainable engineering excellence through pragmatic standards and risk-aware processes.
