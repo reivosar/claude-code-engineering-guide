@@ -11,23 +11,28 @@ Claude Codeを使用して、効率的かつ高品質なソフトウェア開発
 
 ## 📋 目次
 
-### 01. 🚀 Getting Started
-- [01. Claude Codeの効果的な使い方](docs/01.getting-started/01.claude-code-usage.md)
-- [02. プロンプトエンジニアリング](docs/01.getting-started/02.prompt-engineering.md)
+### 01. 📋 要件定義
+- [01. 要件定義](docs/01.requirements/01.requirements-definition.md)
 
-### 02. 💻 Development
-- [01. 開発ワークフロー](docs/02.development/01.workflow.md)
-- [02. コーディング規約](docs/02.development/02.coding-standards.md)
+### 02. 🏗️ 設計
+- [01. システム設計](docs/02.design/01.system-design.md)
 
-### 03. 🔒 Security
-- [01. セキュリティガイドライン](docs/03.security/01.overview.md)
+### 03. 💻 開発
+- [01. コーディング規約](docs/03.development/01.coding-standards.md)
+- [02. セキュリティガイドライン](docs/03.development/02.security-guidelines.md)
 
-### 04. 🧪 Testing
-- [01. テスト戦略](docs/04.testing/01.overview.md)
+### 04. 🧪 テスト
+- [01. テスト戦略](docs/04.testing/01.testing-strategy.md)
 
-### 05. 🌟 Best Practices
-- [01. ベストプラクティス集](docs/05.best-practices/01.overview.md)
-- [02. トラブルシューティング](docs/05.best-practices/02.troubleshooting.md)
+### 05. 🚀 デプロイ
+- [01. デプロイメント戦略](docs/05.deployment/01.deployment-strategy.md)
+
+### 99. 🤖 Claude Codeガイド
+- [01. ワークフロー](docs/99.claude-guide/01.workflow.md)
+- [02. 効果的な使い方](docs/99.claude-guide/02.claude-code-usage.md)
+- [03. プロンプトエンジニアリング](docs/99.claude-guide/03.prompt-engineering.md)
+- [04. ベストプラクティス](docs/99.claude-guide/04.best-practices.md)
+- [05. トラブルシューティング](docs/99.claude-guide/05.troubleshooting.md)
 
 ---
 
@@ -63,19 +68,23 @@ project-root/
 
 ```
 docs/
-├── 01.getting-started/         # 基本的な使い方
-│   ├── 01.claude-code-usage.md
-│   └── 02.prompt-engineering.md
-├── 02.development/            # 開発プロセス
-│   ├── 01.workflow.md
-│   └── 02.coding-standards.md
-├── 03.security/              # セキュリティ
-│   └── 01.overview.md
-├── 04.testing/               # テスト戦略
-│   └── 01.overview.md
-└── 05.best-practices/        # ベストプラクティス
-    ├── 01.overview.md
-    └── 02.troubleshooting.md
+├── 01.requirements/           # 要件定義
+│   └── 01.requirements-definition.md
+├── 02.design/                # 設計
+│   └── 01.system-design.md
+├── 03.development/           # 開発
+│   ├── 01.coding-standards.md
+│   └── 02.security-guidelines.md
+├── 04.testing/               # テスト
+│   └── 01.testing-strategy.md
+├── 05.deployment/            # デプロイ
+│   └── 01.deployment-strategy.md
+└── 99.claude-guide/          # Claude Codeガイド
+    ├── 01.workflow.md
+    ├── 02.claude-code-usage.md
+    ├── 03.prompt-engineering.md
+    ├── 04.best-practices.md
+    └── 05.troubleshooting.md
 ```
 
 ---
@@ -86,7 +95,7 @@ docs/
 2. **プロジェクト情報を更新**
 3. **詳細なガイドを参照して開発開始**
 
-各セクションは独立して読むことができますが、初めての方は [01. Claude Codeの効果的な使い方](docs/01.getting-started/01.claude-code-usage.md) から始めることをお勧めします。
+各セクションは独立して読むことができますが、初めての方は [01. 要件定義](docs/01.requirements/01.requirements-definition.md) から順番に読み進めることをお勧めします。Claude Codeの使い方については [Claude Codeガイド](docs/99.claude-guide/01.workflow.md) を参照してください。
 
 ---
 
