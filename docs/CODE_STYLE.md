@@ -1,8 +1,8 @@
 ---
 risk-level: R1
-maintainer: @dev-team
-last-reviewed: 2025-07-15
-purpose: Language‑agnostic coding standards; language‑specific details defer to respective community best practices
+maintainer: "@dev-team"
+last-reviewed: "2025-07-15"
+purpose: "Language-agnostic coding standards; language-specific details defer to respective community best practices"
 ---
 
 # Code Style Guidelines (Language‑Agnostic Core)

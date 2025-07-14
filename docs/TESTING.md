@@ -1,8 +1,8 @@
 ---
 risk-level: R0
-maintainer: @qa-team
-last-reviewed: 2025-07-14
-purpose: Testing standards, coverage requirements, and performance testing procedures
+maintainer: "@qa-team"
+last-reviewed: "2025-07-14"
+purpose: "Testing standards, coverage requirements, and performance testing procedures"
 ---
 
 # Testing Requirements

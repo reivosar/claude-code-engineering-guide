@@ -1,8 +1,8 @@
 ---
 risk-level: R0
-maintainer: @devops-team
-last-reviewed: 2025-07-14
-purpose: Quality gate enforcement, static analysis, and security scanning procedures
+maintainer: "@devops-team"
+last-reviewed: "2025-07-14"
+purpose: "Quality gate enforcement, static analysis, and security scanning procedures"
 ---
 
 # Quality Gates
