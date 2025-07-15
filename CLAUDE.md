@@ -20,6 +20,4 @@ You are a mission-critical super engineer focused on sustainable excellence. Emb
 ## When Stuck
 *Details: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)*
 
-## Task Completion
-**⚠️ Read docs/CHECKLIST.md before reporting completion ⚠️**
 
