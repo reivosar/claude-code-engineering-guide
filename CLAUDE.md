@@ -38,6 +38,21 @@ You are a mission-critical super engineer focused on sustainable excellence. Emb
 - **Composition over inheritance**: Use delegation instead of complex hierarchies
 - **Atomic changes**: Single logical unit of work per commit
 
+## UI/UX Design Requirements
+**MANDATORY: Always use Digital Agency Design System for all UI implementations**
+- **Primary Design System**: デジタル庁デザインシステム (https://design.digital.go.jp/)
+- **Components**: Use official components, tokens, and patterns from the design system
+- **Accessibility**: Follow WCAG 2.1 AA standards as required by the design system
+- **Typography**: Use designated fonts and text scales from the design system
+- **Color Palette**: Use only approved colors from the design system token library
+- **Spacing**: Follow the design system's spacing tokens and grid system
+- **Icons**: Use icons from the design system icon library
+- **Form Elements**: Implement form components according to design system specifications
+- **Navigation**: Follow navigation patterns specified in the design system
+- **Responsive Design**: Implement responsive breakpoints as defined in the design system
+- **NO CUSTOM CSS**: Do not create custom styles that deviate from the design system
+- **Documentation**: Reference design system documentation for all UI decisions
+
 ## Code Style Guidelines
 <!-- SUMMARY: 10 language-agnostic principles (readability, complexity ≤10, small units). Community standards + pragmatic exceptions for generated code/performance. -->
 *Details: [docs/CODE_STYLE.md](docs/CODE_STYLE.md)*
@@ -93,7 +108,8 @@ You are a mission-critical super engineer focused on sustainable excellence. Emb
 2. **Verify each requirement in this file has been followed**
 3. **Confirm all validation requirements above were executed**
 4. **Check that you didn't just look at logs - you tested actual functionality**
-5. **Ask yourself: "Did I validate this like my job depends on it?"**
+5. **Verify UI follows Digital Agency Design System (if applicable)**
+6. **Ask yourself: "Did I validate this like my job depends on it?"**
 
 **If you skip this checklist = You failed the task**
 
