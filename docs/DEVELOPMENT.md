@@ -82,3 +82,6 @@
 4. **UI follows Digital Agency Design System (if applicable)**
 5. **Security requirements verified**
 6. **Code quality gates passed**
+7. **Ask permission before committing any files**
+
+**If you committed without permission = You failed the task**
