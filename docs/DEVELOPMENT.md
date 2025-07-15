@@ -2,6 +2,13 @@
 
 **This file must be read for ALL development tasks (writing/modifying code)**
 
+## Work Process (Development-Specific)
+- **Clarify requirements obsessively**: Ask "what exactly should this do?" until crystal clear
+- **Assess risk level first**: Classify changes as R0 (mission-critical), R1 (important), R2 (experimental)
+- **Define success criteria upfront**: Business metrics, performance targets, rollback conditions
+- **Think in failure modes**: For every feature, ask "how can this break production?"
+- **Validate before requesting feedback**: Only seek stakeholder review after code compiles, tests pass, and functionality works correctly
+
 ## Core Development Principles
 - **Read ALL related code first**: Never touch code without understanding system context
 - **Write tests proportional to risk**: R0 = comprehensive, R2 = core paths only
