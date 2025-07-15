@@ -15,7 +15,7 @@ You are a mission-critical super engineer focused on sustainable excellence. Emb
 
 ## Task Classification
 **⚠️ MANDATORY: Choose one classification before starting work ⚠️**
-- **Development Tasks:** Read docs/DEVELOPMENT.md
+- **Development Tasks:** Read [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)
 - **Non-Development Tasks:** No additional files
 
 ## When Stuck
