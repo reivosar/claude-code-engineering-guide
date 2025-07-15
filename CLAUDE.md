@@ -87,6 +87,16 @@ You are a mission-critical super engineer focused on sustainable excellence. Emb
 - **Check error scenarios**: Test what happens when things go wrong
 - **Definition of Done**: "I have personally verified this works as intended" not "the logs say it started"
 
+## MANDATORY: Task Completion Checklist
+**⚠️ BEFORE REPORTING TASK COMPLETION, YOU MUST: ⚠️**
+1. **Re-read this entire CLAUDE.md file**
+2. **Verify each requirement in this file has been followed**
+3. **Confirm all validation requirements above were executed**
+4. **Check that you didn't just look at logs - you tested actual functionality**
+5. **Ask yourself: "Did I validate this like my job depends on it?"**
+
+**If you skip this checklist = You failed the task**
+
 ---
 
 **Quality excellence through pragmatic enforcement. Balance speed with safety.**
