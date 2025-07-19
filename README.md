@@ -2,95 +2,78 @@
 
 Streamlined engineering framework optimized for token efficiency and pragmatic excellence.
 
-## Overview
+## Two Versions Available
 
-This repository provides a modular engineering framework for building production-ready software with Claude Code. It dramatically reduces context window usage (75% token reduction) while maintaining strict professional standards.
+This repository provides the same engineering guide in two different formats:
 
-## Key Features
+### 📄 [Markdown Version](markdown/)
+- **Traditional Markdown format**
+- Works directly with Claude Code
+- Natural language readability
+- Load only what you need
 
-- 🎯 **Token-Optimized**: 33-line core framework (6,000→1,500 tokens for non-dev tasks)
-- 🔄 **Modular Documentation**: Read only what you need, when you need it
-- 👤 **Professional Principles**: Mission-critical mindset with sustainable practices
-- 🏗️ **Risk-Aware Excellence**: R0/R1/R2 classification for appropriate quality gates
-- ⚡ **Enforced Validation**: Mandatory checklists prevent shortcuts
-- 📋 **Task Classification**: Automatic routing to development vs non-development workflows
+### ⚙️ [DSL Version](dsl/)  
+- **Claude DSL v0.3 format**
+- Up to 84.6% token reduction
+- Structured definitions
+- Conditional logic and flow control
+
+## Which Should You Choose?
+
+| Use Case | Recommended | Reason |
+|----------|-------------|--------|
+| Mostly simple tasks | Markdown | Minimal token usage |
+| Mostly development tasks | DSL | Massive token reduction |
+| Claude Code beginners | Markdown | Simple setup |
+| Advanced control needed | DSL | Structured conditionals |
+
+## Performance Comparison
+
+### File Count & Lines
+| Format | File Count | Total Lines | Change |
+|--------|------------|-------------|--------|
+| Markdown | 8 files | 594 lines | Baseline |
+| DSL | 4 files | 193 lines | **67.5% reduction** |
+
+### Token Usage
+
+#### Non-Development Tasks
+| Format | Token Count | Change |
+|--------|-------------|--------|
+| Markdown | ~484 tokens | Baseline |
+| DSL | ~400 tokens | **17% reduction** |
+
+#### Development Tasks
+| Format | Token Count | Change |
+|--------|-------------|--------|
+| Markdown | ~5,518 tokens | Baseline |
+| DSL | ~850 tokens | **84.6% reduction** |
+
+### Key Differences
+
+| Feature | Markdown Version | DSL Version |
+|---------|------------------|-------------|
+| **Claude Code Support** | ✅ Auto-loaded | ✅ Auto-loaded |
+| **Setup** | Copy files only | Copy files only |
+| **Readability** | High (natural language) | Structured (learning curve) |
+| **Maintainability** | Distributed file management | Single DSL management |
+| **Extensibility** | Markdown editing | YAML structure editing |
+| **Conditional Logic** | Human judgment dependent | DSL automated processing |
+| **Variables** | ❌ Not supported | ✅ Supported (risk levels, etc.) |
+| **Token Efficiency** | Standard | Dramatically improved |
 
 ## Quick Start
 
-1. **Copy core configuration**:
-   ```bash
-   cp CLAUDE.md your-project/
-   ```
-
-2. **Optional: Copy detailed guidelines**:
-   ```bash
-   cp -r docs/ your-project/
-   ```
-
-3. **Customize for your stack**: Update tool references and team structure
-
-4. **Start building**: Claude Code automatically loads CLAUDE.md (33 lines vs 122)
-
-## Documentation Structure
-
-### Core Framework (Always Read)
-- **[CLAUDE.md](CLAUDE.md)**: Universal principles and mandatory workflow (33 lines)
-- **[docs/CHECKLIST.md](docs/CHECKLIST.md)**: Task completion verification (26 lines)
-
-### Development-Specific (Read Only for Dev Tasks)
-- **[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)**: Coding standards, UI/UX, security requirements (83 lines)
-- **[docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)**: When stuck guidance (7 lines)
-
-## Workflow
-
-**Every Task**: CLAUDE.md → Work → CHECKLIST.md
-
-1. **Start**: Read CLAUDE.md (professional principles + task classification)
-2. **Development Tasks**: Also read docs/DEVELOPMENT.md 
-3. **Work**: Apply appropriate standards
-4. **Complete**: Verify with docs/CHECKLIST.md
-
-## Token Efficiency
-
-| Task Type | Old Framework | New Framework | Savings |
-|-----------|---------------|---------------|---------|
-| Non-Development | ~6,000 tokens | ~1,500 tokens | **75%** |
-| Development | ~6,000 tokens | ~4,500 tokens | **25%** |
-
-## Professional Principles
-
-- **Ask clarifying questions BEFORE coding**: Never assume requirements
-- **Admit when you don't know**: Research instead of guessing
-- **Validate before requesting feedback**: Code compiles, tests pass, functionality works
-- **Risk-aware classification**: R0/R1/R2 for appropriate quality gates
-- **Business impact focus**: Quantify technical decisions
-
-## Contributing
-
-We welcome improvements to this engineering framework:
-
-1. **For principle changes**: Open an issue for discussion first
-2. **For implementation details**: Submit PR to relevant docs/ file
-3. **For new patterns**: Include risk assessment and business justification
-
-### Contribution Process
+### Markdown Version
 ```bash
-git checkout -b improvement/your-change
-# Make focused changes with clear business value
-git commit -m "TYPE: Brief description with impact assessment"
-# Follow our own PR template and review process
+cp markdown/CLAUDE.md your-project/
+cp -r markdown/docs/ your-project/
 ```
+
+### DSL Version
+1. See [dsl/README.md](dsl/README.md) for usage instructions
+2. Load DSL at session start
 
 ## License
 
 MIT License - see [LICENSE](LICENSE) for details.
-
-## Related Resources
-
-- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
-- [Anthropic Engineering Blog](https://www.anthropic.com/engineering)
-- [Object-Oriented Exercise Rules](https://williamdurand.fr/2013/06/03/object-calisthenics/)
-
----
-
-**Mission**: Token-efficient engineering excellence through modular documentation and enforced validation.
