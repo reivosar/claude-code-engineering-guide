@@ -1,29 +1,29 @@
-# Claude Code Engineering Guide - Markdown版
+# Claude Code Engineering Guide - Markdown Version
 
-従来のMarkdown形式のエンジニアリングガイド
+Traditional Markdown format engineering guide
 
-## 使用方法
+## Usage
 
-1. **CLAUDE.md**をプロジェクトルートにコピー
-2. **docs/フォルダ**もプロジェクトルートにコピー
-3. Claude Codeが自動的にCLAUDE.mdを読み込み
+1. Copy **CLAUDE.md** to your project root
+2. Copy **docs/ folder** to your project root  
+3. Claude Code automatically loads CLAUDE.md
 
-## ファイル構成
+## File Structure
 
-- `CLAUDE.md` - メインの指示ファイル（33行）
-- `docs/CHECKLIST.md` - 完了チェックリスト（26行）
-- `docs/DEVELOPMENT.md` - 開発要件（111行）
-- `docs/CODE_STYLE.md` - コーディング規約（98行）
-- `docs/TESTING.md` - テスト要件（50行）
-- `docs/QUALITY_GATES.md` - 品質ゲート（76行）
-- `docs/REPO_FLOW.md` - リポジトリフロー（97行）
-- `docs/TROUBLESHOOTING.md` - トラブルシューティング（10行）
+- `CLAUDE.md` - Main instruction file (33 lines)
+- `docs/CHECKLIST.md` - Completion checklist (26 lines)
+- `docs/DEVELOPMENT.md` - Development requirements (111 lines)
+- `docs/CODE_STYLE.md` - Coding standards (98 lines)
+- `docs/TESTING.md` - Testing requirements (50 lines)
+- `docs/QUALITY_GATES.md` - Quality gates (76 lines)
+- `docs/REPO_FLOW.md` - Repository flow (97 lines)
+- `docs/TROUBLESHOOTING.md` - Troubleshooting (10 lines)
 
-**合計**: 594行、~5,518トークン
+**Total**: 594 lines, ~5,518 tokens
 
-## メリット
+## Benefits
 
-- Claude Codeでそのまま使用可能
-- 必要な部分だけ読み込み（非開発タスク: 484トークン）
-- 自然言語で読みやすい
-- 既存の仕組みに完全対応
+- Works directly with Claude Code
+- Load only what you need (non-dev tasks: 484 tokens)
+- Natural language readability
+- Full compatibility with existing systems

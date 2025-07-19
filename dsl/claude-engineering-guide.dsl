@@ -1,7 +1,6 @@
 claude_dsl:
   version: "0.3"
   
-  # 変数定義
   variables:
     risk_levels:
       R0:
@@ -35,12 +34,10 @@ claude_dsl:
       - "experimental/*"
     
     design_system:
-      name: "デジタル庁デザインシステム"
+      name: "Digital Agency Design System"
       url: "https://design.digital.go.jp/"
   
-  # 再利用可能なコンポーネント
   components:
-    # CLAUDE.md - Professional Behavior
     behaviors:
       ask_clarifying_questions:
         rule: "Never assume requirements"
@@ -61,7 +58,6 @@ claude_dsl:
         rule: "Ship quality code that solves real business problems"
         description: "Balance perfectionism with delivery"
     
-    # Task Classification
     task_types:
       development:
         condition: "writing/modifying code"
@@ -75,7 +71,6 @@ claude_dsl:
         condition: "everything else"
         includes: []
     
-    # DEVELOPMENT.md - Work Process
     work_process:
       clarify_requirements:
         rule: "Ask 'what exactly should this do?' until crystal clear"
@@ -88,7 +83,6 @@ claude_dsl:
       validate_before_feedback:
         rule: "Only seek stakeholder review after code compiles, tests pass, and functionality works correctly"
     
-    # Development Principles
     dev_principles:
       read_all_code:
         rule: "Never touch code without understanding system context"
@@ -103,7 +97,6 @@ claude_dsl:
       monitor_sla:
         rule: "p95 latency, error rates, business KPIs"
     
-    # Design Principles
     design_principles:
       zero_trust:
         rule: "Every component verifies all inputs"
@@ -114,7 +107,6 @@ claude_dsl:
       atomic_changes:
         rule: "Single logical unit of work per commit"
     
-    # Validation Requirements
     validation:
       critical_rule: "Server startup logs ≠ Working application"
       requirements:
@@ -131,7 +123,6 @@ claude_dsl:
         definition_done:
           rule: "I have personally verified this works as intended"
     
-    # Code Style
     code_style:
       principles:
         - "Readability > Cleverness"
@@ -158,7 +149,6 @@ claude_dsl:
           - "Lombok for boilerplate"
           - "Immutable objects preferred"
     
-    # Testing Requirements
     testing:
       pyramid:
         unit: "70%"
@@ -169,7 +159,6 @@ claude_dsl:
         R1: "Required: Key endpoint performance tests"
         R2: "Optional: Basic performance sanity checks"
     
-    # Quality Gates
     quality_gates:
       pre_commit:
         - "Formatting (auto-fix)"
@@ -186,7 +175,6 @@ claude_dsl:
         - "DAST (Dynamic Application Security Testing)"
         - "Dependency vulnerability scans"
     
-    # Repository Flow
     repo_flow:
       branch_naming: "TYPE/description-issue"
       pr_template:
@@ -199,7 +187,6 @@ claude_dsl:
         default: "squash"
         large_refactor: "merge commit"
     
-    # UI/UX Requirements
     ui_ux:
       mandatory: "${design_system.name}"
       requirements:
@@ -211,7 +198,6 @@ claude_dsl:
         - "Use icons from design system library"
         - "NO CUSTOM CSS"
     
-    # Troubleshooting
     troubleshooting:
       steps:
         - "Step back and rubber duck"
@@ -222,7 +208,6 @@ claude_dsl:
         - "Talk to humans"
         - "Validate before asking"
     
-    # Checklists
     checklists:
       professional_behavior:
         - "Asked clarifying questions instead of assuming?"
@@ -249,20 +234,17 @@ claude_dsl:
       final:
         - "Did I follow every principle like my job depends on it?"
     
-    # Mandatory Rules
     mandatory_rules:
       process: "ALWAYS start with CLAUDE.md, end with CHECKLIST.md"
       classification: "MUST choose classification before any work"
       commit: "NEVER commit without explicit user permission"
       checklist_skip: "If skip checklist = task failed"
     
-    # Error States
     error_states:
       commit_without_permission: "You failed the task"
       skip_checklist: "You failed the task"
       server_logs_only: "Not sufficient - must verify actual functionality"
   
-  # 条件分岐ルール
   rules:
     - if: task_type == "development"
       then:
@@ -286,9 +268,7 @@ claude_dsl:
         include:
           - components.ui_ux
   
-  # 実行フロー
   flow:
-    # 1. 初期設定
     - action: load
       target: components.behaviors
       
@@ -297,18 +277,15 @@ claude_dsl:
         role: "mission-critical super engineer"
         traits: "${components.behaviors}"
     
-    # 2. プロセス開始
     - action: remind
       with:
-        message: "⚠️ Start: Read CLAUDE.md / End: Read docs/CHECKLIST.md ⚠️"
+        message: "Start: Read CLAUDE.md / End: Read docs/CHECKLIST.md"
     
-    # 3. タスク分類（必須）
     - action: classify_task
       with:
         types: "${components.task_types}"
         mandatory: true
     
-    # 4. タスクタイプに応じた処理
     - if: classified_task == "development"
       then:
         - action: load
@@ -320,18 +297,15 @@ claude_dsl:
         - action: apply
           target: components.mandatory_rules
     
-    # 5. 作業実行
     - action: execute_work
       with:
         guidelines: "all_loaded_components"
     
-    # 6. 詰まった場合の処理
     - if: stuck == true
       then:
         - action: present
           target: components.troubleshooting.steps
     
-    # 7. 完了前チェックリスト
     - action: present_checklist
       target: components.checklists.professional_behavior
       
@@ -346,7 +320,6 @@ claude_dsl:
         - action: present_checklist
           target: components.checklists.development_specific
     
-    # 8. 最終確認
     - action: confirm
       target: components.checklists.final
       with:

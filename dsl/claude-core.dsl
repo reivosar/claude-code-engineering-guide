@@ -1,7 +1,5 @@
 claude_dsl:
   version: "0.3"
-  
-  # コアコンポーネント（全タスク共通）
   components:
     behaviors:
       ask_clarifying_questions:

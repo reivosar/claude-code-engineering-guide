@@ -6,13 +6,13 @@ Streamlined engineering framework optimized for token efficiency and pragmatic e
 
 This repository provides the same engineering guide in two different formats:
 
-### 📄 [Markdown Version](markdown/)
+### [Markdown Version](markdown/)
 - **Traditional Markdown format**
 - Works directly with Claude Code
 - Natural language readability
 - Load only what you need
 
-### ⚙️ [DSL Version](dsl/)  
+### [DSL Version](dsl/)  
 - **Claude DSL v0.3 format**
 - Up to 84.6% token reduction
 - Structured definitions

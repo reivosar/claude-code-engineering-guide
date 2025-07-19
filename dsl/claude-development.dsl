@@ -1,7 +1,5 @@
 claude_dsl:
   version: "0.3"
-  
-  # 開発専用コンポーネント
   components:
     work_process:
       clarify_requirements:
@@ -36,7 +34,7 @@ claude_dsl:
       R2: { coverage: "90%", mutation: "80%" }
     
     ui_ux:
-      system: "デジタル庁デザインシステム"
+      system: "Digital Agency Design System"
       rules:
         - "Use official components only"
         - "NO CUSTOM CSS"

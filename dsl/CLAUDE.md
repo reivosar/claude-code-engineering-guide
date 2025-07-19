@@ -1,12 +1,10 @@
-# CLAUDE.md - DSL版
+# CLAUDE.md - DSL Version
 
-以下のClaude DSL v0.3に従って動作してください：
+Follow this Claude DSL v0.3:
 
 ```yaml
 claude_dsl:
   version: "0.3"
-  
-  # コアコンポーネント（全タスク共通）
   components:
     behaviors:
       ask_clarifying_questions:
@@ -67,13 +65,11 @@ claude_dsl:
         message: "Did I follow every principle?"
 ```
 
-**開発タスクの場合、追加で以下のDSLも読み込んでください：**
+**For development tasks, additionally load this DSL:**
 
 ```yaml
 claude_dsl:
   version: "0.3"
-  
-  # 開発専用コンポーネント
   components:
     work_process:
       clarify_requirements:
@@ -108,7 +104,7 @@ claude_dsl:
       R2: { coverage: "90%", mutation: "80%" }
     
     ui_ux:
-      system: "デジタル庁デザインシステム"
+      system: "Digital Agency Design System"
       rules:
         - "Use official components only"
         - "NO CUSTOM CSS"

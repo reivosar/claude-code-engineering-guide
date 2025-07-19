@@ -1,50 +1,50 @@
-# Claude Code Engineering Guide - DSL版
+# Claude Code Engineering Guide - DSL Version
 
-Claude DSL v0.3形式の構造化エンジニアリングガイド
+Structured engineering guide in Claude DSL v0.3 format
 
-## 使用方法
+## Usage
 
-### 方法1: 分割DSL（推奨）
+### Method 1: Split DSL (Recommended)
 
-1. **セッション開始時に指示**:
+1. **At session start, instruct**:
    ```
-   以下のClaude DSL v0.3に従って動作してください：
-   [claude-core.dslの内容をコピー]
-   ```
-
-2. **開発タスクの場合、追加で**:
-   ```
-   開発タスクのため、以下のDSLも読み込んでください：
-   [claude-development.dslの内容をコピー]
+   Follow this Claude DSL v0.3:
+   [Copy claude-core.dsl content here]
    ```
 
-### 方法2: 統合DSL
-
-1. **セッション開始時に指示**:
+2. **For development tasks, additionally**:
    ```
-   以下のClaude DSL v0.3に従って動作してください：
-   [claude-engineering-guide.dslの内容をコピー]
+   For development tasks, also load this DSL:
+   [Copy claude-development.dsl content here]
    ```
 
-## ファイル構成
+### Method 2: Unified DSL
 
-### 分割版（推奨）
-- `claude-core.dsl` - 基本機能（61行、~400トークン）
-- `claude-development.dsl` - 開発専用（69行、~450トークン）
+1. **At session start, instruct**:
+   ```
+   Follow this Claude DSL v0.3:
+   [Copy claude-engineering-guide.dsl content here]
+   ```
 
-### 統合版
-- `claude-engineering-guide.dsl` - 全機能（354行、~2,832トークン）
+## File Structure
 
-## トークン効率
+### Split Version (Recommended)
+- `claude-core.dsl` - Core functionality (61 lines, ~400 tokens)
+- `claude-development.dsl` - Development-specific (69 lines, ~450 tokens)
 
-| タスクタイプ | Markdown | 分割DSL | 統合DSL | 削減率 |
-|-------------|----------|---------|---------|--------|
-| 非開発 | 484 | 400 | 2,832 | 17%削減 |
-| 開発 | 5,518 | 850 | 2,832 | 84.6%削減 |
+### Unified Version
+- `claude-engineering-guide.dsl` - Full functionality (354 lines, ~2,832 tokens)
 
-## メリット
+## Token Efficiency
 
-- **大幅なトークン削減**（最大84.6%）
-- **構造化された定義**（変数、コンポーネント、ルール）
-- **条件分岐とフロー制御**
-- **単一ファイルで管理**
+| Task Type | Markdown | Split DSL | Unified DSL | Reduction |
+|-----------|----------|-----------|-------------|-----------|
+| Non-dev | 484 | 400 | 2,832 | 17% reduction |
+| Development | 5,518 | 850 | 2,832 | 84.6% reduction |
+
+## Benefits
+
+- **Massive token reduction** (up to 84.6%)
+- **Structured definitions** (variables, components, rules)
+- **Conditional logic and flow control**
+- **Single file management**
