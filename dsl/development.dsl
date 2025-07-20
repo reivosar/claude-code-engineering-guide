@@ -1,5 +1,27 @@
 claude_dsl:
   version: "0.3"
+  variables:
+    validation_order:
+      - "run_unit_tests_if_available"
+      - "verify_startup_success"
+      - "test_end_to_end_user_experience"
+      - "verify_critical_paths_manually"
+      - "test_api_with_real_requests"
+    execution_steps:
+      - "Load validation rules from validation-rules.dsl"
+      - "Load application type definitions from app-types.dsl"
+      - "Identify target application type and architecture"
+      - "Execute appropriate validation sequence"
+      - "Document results and evidence"
+    required_artifacts_list:
+      - "Startup confirmation logs"
+      - "Working application demonstration"
+      - "Test execution logs"
+    completion_criteria_list:
+      - "All validation steps executed"
+      - "No critical failures detected"
+      - "validation_passed = true"
+  
   components:
     work_process:
       clarify_requirements:
@@ -13,12 +35,37 @@ claude_dsl:
       validate_before_feedback:
         rule: "Code compiles, tests pass, works correctly"
     
+    validation_rules: "${variables.validation_order}"
+    
+    mandatory_validation:
+      halt_condition: "validation_passed = false"
+      enforcement: "STRICT - No exceptions"
+      definition: "Development task = Implementation + All validations passed"
+      user_report_rule: "NO user reporting until validation_passed = true"
+      
+    validation_requirements:
+      all_must_complete: "${variables.validation_order}"
+      
+      failure_response:
+        action: "IMMEDIATE_HALT"
+        message: "Task FAILED. Missing validation steps detected."
+        
+    validation_execution:
+      load_external_rules: "validation-rules.dsl"
+      load_app_types: "app-types.dsl"
+      
+      execution_flow: "${variables.execution_steps}"
+          
+    post_validation:
+      required_artifacts: "${variables.required_artifacts_list}"
+      
+      completion_criteria: "${variables.completion_criteria_list}"
+    
     validation:
       critical: "Server startup logs ≠ Working application"
       rules:
         - "Test actual user experience"
         - "Verify critical paths manually"
-        - "Screenshot or demonstrate"
         - "Test API with real requests"
     
     code_style:

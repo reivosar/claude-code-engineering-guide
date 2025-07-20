@@ -12,4 +12,4 @@
 - **Development is NOT complete until validation_passed = true**
 - **FORBIDDEN: Reporting to user before development is complete**
 
-Follow claude-main.dsl for complete DSL execution.
+Follow entry-point.dsl for complete DSL execution.
