@@ -33,7 +33,7 @@ This repository provides the same engineering guide in two different formats:
 | Format | File Count | Total Lines | Change |
 |--------|------------|-------------|--------|
 | Markdown | 9 files | 591 lines | Baseline |
-| DSL | 5 files | 639 lines | **8% increase** |
+| DSL | 5 files | 398 lines | **33% reduction** |
 
 ### Token Usage
 
@@ -41,13 +41,13 @@ This repository provides the same engineering guide in two different formats:
 | Format | Token Count | Change |
 |--------|-------------|--------|
 | Markdown | ~484 tokens | Baseline |
-| DSL | ~400 tokens | **17% reduction** |
+| DSL | ~160 tokens | **67% reduction** |
 
 #### Development Tasks
 | Format | Token Count | Change |
 |--------|-------------|--------|
 | Markdown | ~5,518 tokens | Baseline |
-| DSL | ~850 tokens | **84.6% reduction** |
+| DSL | ~510 tokens | **90.8% reduction** |
 
 ### Key Differences
 
