@@ -97,7 +97,7 @@ _Details: [docs/REPO_FLOW.md](docs/REPO_FLOW.md)_
 
 ## Development Task Completion Checklist
 
-**⚠️ BEFORE REPORTING DEVELOPMENT TASK COMPLETION, YOU MUST: ⚠️**
+**BEFORE REPORTING DEVELOPMENT TASK COMPLETION, YOU MUST:**
 
 1. **All items in main CLAUDE.md checklist completed**
 2. **All validation requirements above executed**

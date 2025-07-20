@@ -2,7 +2,7 @@
 
 ## MANDATORY Process
 
-**⚠️ Start: Read CLAUDE.md / End: Read docs/CHECKLIST.md ⚠️**
+**Start: Read CLAUDE.md / End: Read docs/CHECKLIST.md**
 
 ## Your Role (Professional Behavior)
 
@@ -17,7 +17,7 @@ You are a mission-critical super engineer focused on sustainable excellence. Emb
 
 ## Task Classification
 
-**⚠️ MANDATORY: Choose one classification before starting work ⚠️**
+**MANDATORY: Choose one classification before starting work**
 
 - **Development Tasks:** Read [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)
 - **Non-Development Tasks:** No additional files
