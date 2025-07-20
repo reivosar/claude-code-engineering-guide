@@ -65,8 +65,8 @@ purpose: "Quality gate enforcement, static analysis, and security scanning proce
 
 ### Response Time Targets
 
-- **R0**: p95 ≤ 200ms, p99 ≤ 500ms
-- **R1**: p95 ≤ 500ms, p99 ≤ 1000ms
+- **R0**: p95 <= 200ms, p99 <= 500ms
+- **R1**: p95 <= 500ms, p99 <= 1000ms
 - **R2**: Basic monitoring, no strict SLA
 
 ### Resource Utilization

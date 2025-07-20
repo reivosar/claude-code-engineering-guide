@@ -42,7 +42,7 @@
 
 ## Code Style Guidelines
 
-**SUMMARY**: 10 language-agnostic principles (readability, complexity ≤10, small units). Community standards + pragmatic exceptions for generated code/performance.
+**SUMMARY**: 10 language-agnostic principles (readability, complexity <=10, small units). Community standards + pragmatic exceptions for generated code/performance.
 _Details: [docs/CODE_STYLE.md](docs/CODE_STYLE.md)_
 
 ## Testing Requirements
