@@ -5,6 +5,9 @@ Follow this Claude DSL v0.3:
 ```yaml
 claude_dsl:
   version: "0.3"
+  variables:
+    validation_passed: false
+  
   components:
     behaviors:
       ask_clarifying_questions:
@@ -35,11 +38,40 @@ claude_dsl:
       - "Took ownership?"
       - "Balanced delivery?"
     
+    validation_rules:
+      - "test_end_to_end_user_experience"
+      - "verify_critical_paths_manually"
+      - "test_api_with_real_requests"
+      - "screenshot_or_demonstrate_behavior"
+      - "verify_startup_success"
+    
     mandatory_rules:
       process: "Start with classification, end with checklist"
       checklist_skip: "If skip checklist = task failed"
   
+  rules:
+    - if: not validation_passed
+      then:
+        action: halt
+        message: |
+          Validation requirements are incomplete. Complete ALL of the following:
+          1. Application startup confirmation
+          2. End-to-end testing
+          3. Manual verification of critical paths
+          4. Screenshot/demonstration capture
+          5. API testing with real requests
+    - if: task_type == "development"
+      then:
+        include:
+          - components.validation_rules
+          - components.work_process
+          - components.validation
+  
   flow:
+    - if: not validation_passed
+      then:
+        - action: halt
+          message: "Validation incomplete. Testing must be performed before proceeding."
     - action: assign_role
       with:
         role: "super_engineer"
@@ -70,6 +102,9 @@ claude_dsl:
 ```yaml
 claude_dsl:
   version: "0.3"
+  variables:
+    validation_passed: false
+  
   components:
     work_process:
       clarify_requirements:
@@ -83,6 +118,13 @@ claude_dsl:
       validate_before_feedback:
         rule: "Code compiles, tests pass, works correctly"
     
+    validation_rules:
+      - "test_end_to_end_user_experience"
+      - "verify_critical_paths_manually"
+      - "test_api_with_real_requests"
+      - "screenshot_or_demonstrate_behavior"
+      - "verify_startup_success"
+    
     validation:
       critical: "Server startup logs ≠ Working application"
       rules:
@@ -90,6 +132,7 @@ claude_dsl:
         - "Verify critical paths manually"
         - "Screenshot or demonstrate"
         - "Test API with real requests"
+        - "Verify startup success"
     
     code_style:
       - "Readability > Cleverness"
@@ -120,7 +163,29 @@ claude_dsl:
     
     commit_rule: "NEVER commit without permission"
   
+  rules:
+    - if: not validation_passed
+      then:
+        action: halt
+        message: |
+          Validation requirements are incomplete. Complete ALL of the following:
+          1. Application startup confirmation
+          2. End-to-end testing
+          3. Manual verification of critical paths
+          4. Screenshot/demonstration capture
+          5. API testing with real requests
+    - if: task_type == "development"
+      then:
+        include:
+          - components.validation_rules
+          - components.work_process
+          - components.validation
+  
   flow:
+    - if: not validation_passed
+      then:
+        - action: halt
+          message: "Validation incomplete. Testing must be performed before proceeding."
     - action: load_all
       targets:
         - components.work_process
