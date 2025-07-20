@@ -29,22 +29,24 @@ Structured engineering guide in Claude DSL v0.3 format
 ## File Structure
 
 ### Split Version (Recommended)
-- `claude-core.dsl` - Core functionality (61 lines, ~400 tokens)
-- `claude-development.dsl` - Development-specific (69 lines, ~450 tokens)
+- `claude-core.dsl` - Core functionality (59 lines, ~190 tokens)
+- `claude-development.dsl` - Development-specific (67 lines, ~240 tokens)
+- `checklist.dsl` - Shared checklists (31 lines, ~170 tokens)
 
 ### Unified Version
-- `claude-engineering-guide.dsl` - Full functionality (354 lines, ~2,832 tokens)
+- `claude-engineering-guide.dsl` - Full functionality (326 lines, ~1,250 tokens)
 
 ## Token Efficiency
 
 | Task Type | Markdown | Split DSL | Unified DSL | Reduction |
 |-----------|----------|-----------|-------------|-----------|
-| Non-dev | 484 | 400 | 2,832 | 17% reduction |
-| Development | 5,518 | 850 | 2,832 | 84.6% reduction |
+| Non-dev | 484 | 190 | 1,250 | 60.7% reduction |
+| Development | 5,518 | 430 | 1,250 | 92.2% reduction |
 
 ## Benefits
 
-- **Massive token reduction** (up to 84.6%)
+- **Massive token reduction** (up to 92.2%)
 - **Structured definitions** (variables, components, rules)
 - **Conditional logic and flow control**
 - **Single file management**
+- **Modular checklist system** with shared components
