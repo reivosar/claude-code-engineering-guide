@@ -6,7 +6,7 @@
 ```mermaid
 graph TB
     Start([User starts task]) --> ReadClaude[Read CLAUDE.md<br/>80 tokens]
-    ReadClaude --> LoadMain[Load claude-main.dsl<br/>600 tokens]
+    ReadClaude --> LoadMain[Load entry-point.dsl<br/>400 tokens]
     LoadMain --> ClassifyTask{Task classification}
     
     ClassifyTask -->|Non-development| CoreFlow[Execute core flow]
@@ -79,18 +79,18 @@ graph TD
 ### Main DSL Structure (Recommended)
 ```mermaid
 graph LR
-    CLAUDE[CLAUDE.md<br/>Entry point<br/>15 lines, 80 tokens] --> Main[claude-main.dsl<br/>Main execution logic<br/>140 lines, 600 tokens]
+    CLAUDE[CLAUDE.md<br/>Entry point<br/>15 lines, 80 tokens] --> Main[entry-point.dsl<br/>Main execution logic<br/>94 lines, 400 tokens]
     
     Main --> External1[validation-rules.dsl<br/>63 lines, 280 tokens]
     Main --> External2[app-types.dsl<br/>62 lines, 270 tokens]
-    Main --> Dev[claude-development.dsl<br/>73 lines, 240 tokens]
+    Main --> Dev[development.dsl<br/>119 lines, 350 tokens]
 ```
 
 ### Split DSL Structure (Advanced)
 ```mermaid
 graph LR
-    CLAUDE_Split[CLAUDE.md<br/>Entry point] --> Core[claude-core.dsl<br/>59 lines, 190 tokens]
-    CLAUDE_Split --> Dev_Split[claude-development.dsl<br/>67 lines, 240 tokens]
+    CLAUDE_Split[CLAUDE.md<br/>Entry point] --> Core[entry-point.dsl<br/>94 lines, 400 tokens]
+    CLAUDE_Split --> Dev_Split[development.dsl<br/>119 lines, 350 tokens]
     CLAUDE_Split --> Check[checklist.dsl<br/>31 lines, 170 tokens]
     
     Core --> CoreComp[Basic behaviors<br/>Task classification<br/>Core flow]

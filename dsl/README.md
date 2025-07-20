@@ -8,7 +8,7 @@ Structured engineering guide in Claude DSL v0.3 format
 
 1. **At session start, instruct**:
    ```
-   Follow claude-main.dsl for complete DSL execution.
+   Follow entry-point.dsl for complete DSL execution.
    ```
 
 ### Method 2: Split DSL (Advanced)
@@ -16,13 +16,13 @@ Structured engineering guide in Claude DSL v0.3 format
 1. **At session start, instruct**:
    ```
    Follow this Claude DSL v0.3:
-   [claude-core.dsl content]
+   [entry-point.dsl content]
    ```
 
 2. **For development tasks, additionally**:
    ```
    For development tasks, also load this DSL:
-   [claude-development.dsl content]
+   [development.dsl content]
    ```
 
 ### Method 3: Unified DSL
@@ -30,24 +30,21 @@ Structured engineering guide in Claude DSL v0.3 format
 1. **At session start, instruct**:
    ```
    Follow this Claude DSL v0.3:
-   [claude-engineering-guide.dsl content]
+   [validation-rules.dsl content]
    ```
 
 ## File Structure
 
 ### Main DSL (Recommended)
 - `CLAUDE.md` - Entry point with mandatory rules (15 lines, ~80 tokens)
-- `claude-main.dsl` - Main DSL execution logic (140 lines, ~600 tokens)
+- `entry-point.dsl` - Main DSL execution logic (94 lines, ~400 tokens)
 
 ### Split Version (Advanced)
-- `claude-core.dsl` - Core functionality (59 lines, ~190 tokens)
-- `claude-development.dsl` - Development-specific (73 lines, ~240 tokens)
+- `development.dsl` - Development-specific (119 lines, ~350 tokens)
 - `checklist.dsl` - Shared checklists (31 lines, ~170 tokens)
 - `validation-rules.dsl` - Program correctness validation (63 lines, ~280 tokens)
 - `app-types.dsl` - Application type definitions (62 lines, ~270 tokens)
 
-### Unified Version
-- `claude-engineering-guide.dsl` - Full functionality (326 lines, ~1,250 tokens)
 
 ## Token Efficiency
 
