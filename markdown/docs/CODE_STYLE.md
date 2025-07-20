@@ -1,10 +1,3 @@
----
-risk-level: R1
-maintainer: "@dev-team"
-last-reviewed: "2025-07-15"
-purpose: "Language-agnostic coding standards; language-specific details defer to respective community best practices"
----
-
 # Code Style Guidelines (Language-Agnostic Core)
 
 ## Core Principles -- Applicable to Any Programming Language
@@ -49,6 +42,3 @@ If a language requires stricter or divergent conventions, create a short overlay
 4. **Public APIs & domain terms** documented.
 5. **No TODO/FIXME** left in committed code.
 
----
-
-**Quality is a habit, not an act.**

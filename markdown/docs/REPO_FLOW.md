@@ -1,10 +1,3 @@
----
-risk-level: R1
-maintainer: "@dev-team"
-last-reviewed: "2025-07-14"
-purpose: "Repository workflow, branching strategy, and PR management procedures"
----
-
 # Repository Flow
 
 ## Branch Strategy
