@@ -2,16 +2,15 @@
 
 ## 1. Overall Flow Overview
 
+### Main DSL Flow (Recommended)
 ```mermaid
 graph TB
-    Start([User starts task]) --> ReadClaude[Read CLAUDE.md]
-    ReadClaude --> ClassifyTask{Task classification}
+    Start([User starts task]) --> ReadClaude[Read CLAUDE.md<br/>80 tokens]
+    ReadClaude --> LoadMain[Load claude-main.dsl<br/>600 tokens]
+    LoadMain --> ClassifyTask{Task classification}
     
-    ClassifyTask -->|Non-development| LoadCore[Load core DSL<br/>190 tokens]
-    ClassifyTask -->|Development| LoadDev[Load core + dev DSL<br/>430 tokens]
-    
-    LoadCore --> CoreFlow[Execute core flow]
-    LoadDev --> DevFlow[Execute dev flow]
+    ClassifyTask -->|Non-development| CoreFlow[Execute core flow]
+    ClassifyTask -->|Development| DevFlow[Execute dev flow<br/>+ load external DSLs]
     
     CoreFlow --> BasicCheck[Basic checklist]
     DevFlow --> Validate[Mandatory validation]
@@ -23,6 +22,30 @@ graph TB
     BasicCheck --> End([Complete])
     DevCheck --> End
     Halt --> End
+```
+
+### Split DSL Flow (Advanced)
+```mermaid
+graph TB
+    StartSplit([User starts task]) --> ReadClaudeSplit[Read CLAUDE.md]
+    ReadClaudeSplit --> ClassifyTaskSplit{Task classification}
+    
+    ClassifyTaskSplit -->|Non-development| LoadCore[Load core DSL<br/>190 tokens]
+    ClassifyTaskSplit -->|Development| LoadDev[Load core + dev DSL<br/>430 tokens]
+    
+    LoadCore --> CoreFlowSplit[Execute core flow]
+    LoadDev --> DevFlowSplit[Execute dev flow]
+    
+    CoreFlowSplit --> BasicCheckSplit[Basic checklist]
+    DevFlowSplit --> ValidateSplit[Mandatory validation]
+    
+    ValidateSplit --> ValidationCheckSplit{validation_passed?}
+    ValidationCheckSplit -->|false| HaltSplit[HALT execution]
+    ValidationCheckSplit -->|true| DevCheckSplit[Development checklist]
+    
+    BasicCheckSplit --> EndSplit([Complete])
+    DevCheckSplit --> EndSplit
+    HaltSplit --> EndSplit
 ```
 
 ## 2. Development Task Detailed Flow
@@ -53,14 +76,25 @@ graph TD
 
 ## 3. DSL File Structure and Loading
 
+### Main DSL Structure (Recommended)
 ```mermaid
 graph LR
-    CLAUDE[CLAUDE.md<br/>Entry point] --> Core[claude-core.dsl<br/>59 lines, 190 tokens]
-    CLAUDE --> Dev[claude-development.dsl<br/>67 lines, 240 tokens]
-    CLAUDE --> Check[checklist.dsl<br/>31 lines, 170 tokens]
+    CLAUDE[CLAUDE.md<br/>Entry point<br/>15 lines, 80 tokens] --> Main[claude-main.dsl<br/>Main execution logic<br/>140 lines, 600 tokens]
+    
+    Main --> External1[validation-rules.dsl<br/>63 lines, 280 tokens]
+    Main --> External2[app-types.dsl<br/>62 lines, 270 tokens]
+    Main --> Dev[claude-development.dsl<br/>73 lines, 240 tokens]
+```
+
+### Split DSL Structure (Advanced)
+```mermaid
+graph LR
+    CLAUDE_Split[CLAUDE.md<br/>Entry point] --> Core[claude-core.dsl<br/>59 lines, 190 tokens]
+    CLAUDE_Split --> Dev_Split[claude-development.dsl<br/>67 lines, 240 tokens]
+    CLAUDE_Split --> Check[checklist.dsl<br/>31 lines, 170 tokens]
     
     Core --> CoreComp[Basic behaviors<br/>Task classification<br/>Core flow]
-    Dev --> DevComp[Work processes<br/>Validation rules<br/>Dev checklist]
+    Dev_Split --> DevComp[Work processes<br/>Validation rules<br/>Dev checklist]
     Check --> CheckComp[Basic checklist<br/>Development checklist]
 ```
 

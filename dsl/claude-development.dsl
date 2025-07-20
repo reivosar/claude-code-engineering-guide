@@ -59,6 +59,11 @@ claude_dsl:
         - components.testing
         - components.ui_ux
     
+    - action: load_external
+      files:
+        - "validation-rules.dsl"
+        - "app-types.dsl"
+    
     - action: remind
       with:
         critical: "${components.validation.critical}"
