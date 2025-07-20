@@ -1,102 +1,85 @@
 # Claude DSL Processing Flow
 
-## 1. 全体フロー概要
+## 1. Overall Flow Overview
 
 ```mermaid
 graph TB
-    Start([ユーザーがタスク開始]) --> ReadClaude[CLAUDE.md読み込み]
-    ReadClaude --> ClassifyTask{タスク分類}
+    Start([User starts task]) --> ReadClaude[Read CLAUDE.md]
+    ReadClaude --> ClassifyTask{Task classification}
     
-    ClassifyTask -->|非開発タスク| LoadCore[core DSL読み込み<br/>190トークン]
-    ClassifyTask -->|開発タスク| LoadDev[core + development DSL読み込み<br/>430トークン]
+    ClassifyTask -->|Non-development| LoadCore[Load core DSL<br/>190 tokens]
+    ClassifyTask -->|Development| LoadDev[Load core + dev DSL<br/>430 tokens]
     
-    LoadCore --> CoreFlow[コア処理実行]
-    LoadDev --> DevFlow[開発処理実行]
+    LoadCore --> CoreFlow[Execute core flow]
+    LoadDev --> DevFlow[Execute dev flow]
     
-    CoreFlow --> BasicCheck[基本チェックリスト]
-    DevFlow --> Validate[必須検証実行]
+    CoreFlow --> BasicCheck[Basic checklist]
+    DevFlow --> Validate[Mandatory validation]
     
     Validate --> ValidationCheck{validation_passed?}
-    ValidationCheck -->|false| Halt[処理停止]
-    ValidationCheck -->|true| DevCheck[開発チェックリスト]
+    ValidationCheck -->|false| Halt[HALT execution]
+    ValidationCheck -->|true| DevCheck[Development checklist]
     
-    BasicCheck --> End([完了])
+    BasicCheck --> End([Complete])
     DevCheck --> End
     Halt --> End
 ```
 
-## 2. 開発タスクの詳細フロー
+## 2. Development Task Detailed Flow
 
 ```mermaid
 graph TD
-    DevStart([開発タスク開始]) --> Questions[要件確認質問<br/>日本語で実施]
-    Questions --> UserConfirm{ユーザー承認?}
-    UserConfirm -->|No| Stop[処理停止]
+    DevStart([Development task start]) --> Questions[Clarifying questions<br/>in Japanese]
+    Questions --> UserConfirm{User approval?}
+    UserConfirm -->|No| Stop[Stop execution]
     UserConfirm -->|Yes| SetVar[validation_passed = false]
     
-    SetVar --> RiskAssess[リスク評価<br/>R0/R1/R2]
-    RiskAssess --> Implement[コード実装]
-    Implement --> MandatoryValidation[必須検証開始]
+    SetVar --> RiskAssess[Risk assessment<br/>R0/R1/R2]
+    RiskAssess --> Implement[Code implementation]
+    Implement --> MandatoryValidation[Start mandatory validation]
     
-    MandatoryValidation --> ServerTest[サーバー起動確認]
-    ServerTest --> ClientTest[クライアント起動確認]
-    ClientTest --> E2ETest[エンドツーエンド機能テスト]
-    E2ETest --> ManualTest[重要経路手動検証]
-    ManualTest --> APITest[API実リクエストテスト]
-    APITest --> Screenshot[スクリーンショット取得]
+    MandatoryValidation --> ServerTest[Server startup verification]
+    ServerTest --> ClientTest[Client startup verification]
+    ClientTest --> E2ETest[End-to-end functionality test]
+    E2ETest --> ManualTest[Critical path manual verification]
+    ManualTest --> APITest[API real request testing]
+    APITest --> Screenshot[Screenshot capture]
     
-    Screenshot --> AllValidated{全検証完了?}
-    AllValidated -->|No| HaltDev[即座に停止<br/>ユーザー報告禁止]
+    Screenshot --> AllValidated{All validations complete?}
+    AllValidated -->|No| HaltDev[IMMEDIATE HALT<br/>Block user reporting]
     AllValidated -->|Yes| SetTrue[validation_passed = true]
-    SetTrue --> ReportOK[ユーザー報告許可]
+    SetTrue --> ReportOK[Allow user reporting]
 ```
 
-## 3. DSLファイル構造と読み込み
+## 3. DSL File Structure and Loading
 
 ```mermaid
 graph LR
-    CLAUDE[CLAUDE.md<br/>エントリーポイント] --> Core[claude-core.dsl<br/>59行 190トークン]
-    CLAUDE --> Dev[claude-development.dsl<br/>67行 240トークン]
-    CLAUDE --> Check[checklist.dsl<br/>31行 170トークン]
+    CLAUDE[CLAUDE.md<br/>Entry point] --> Core[claude-core.dsl<br/>59 lines, 190 tokens]
+    CLAUDE --> Dev[claude-development.dsl<br/>67 lines, 240 tokens]
+    CLAUDE --> Check[checklist.dsl<br/>31 lines, 170 tokens]
     
-    Core --> CoreComp[基本動作<br/>タスク分類<br/>コアフロー]
-    Dev --> DevComp[作業プロセス<br/>検証ルール<br/>開発チェックリスト]
-    Check --> CheckComp[基本チェックリスト<br/>開発チェックリスト]
+    Core --> CoreComp[Basic behaviors<br/>Task classification<br/>Core flow]
+    Dev --> DevComp[Work processes<br/>Validation rules<br/>Dev checklist]
+    Check --> CheckComp[Basic checklist<br/>Development checklist]
 ```
 
-## 4. 条件分岐ロジック
+## 4. Conditional Logic
 
 ```mermaid
 graph TD
-    TaskType{task_type判定} -->|development| LoadDevDSL[development DSL読み込み]
-    TaskType -->|non-development| SkipDev[development DSL スキップ]
+    TaskType{task_type check} -->|development| LoadDevDSL[Load development DSL]
+    TaskType -->|non-development| SkipDev[Skip dev DSL]
     
     LoadDevDSL --> ValidationVar{validation_passed?}
-    ValidationVar -->|false| EnforceValidation[厳格な検証強制]
-    ValidationVar -->|true| AllowComplete[完了許可]
+    ValidationVar -->|false| EnforceValidation[Strict validation enforcement]
+    ValidationVar -->|true| AllowComplete[Allow completion]
     
-    EnforceValidation --> BlockReport[ユーザー報告ブロック]
-    EnforceValidation --> ForceValidation[検証完了を強制]
+    EnforceValidation --> BlockReport[Block user reporting]
+    EnforceValidation --> ForceValidation[Force validation completion]
 ```
 
-## 5. File Structure & Loading
-
-```
-CLAUDE.md (Entry Point)
-├── claude-core.dsl (59 lines, ~190 tokens)
-│   ├── Basic behaviors
-│   ├── Task classification 
-│   └── Core flow control
-├── claude-development.dsl (67 lines, ~240 tokens)
-│   ├── Work processes
-│   ├── Validation rules
-│   └── Development checklist
-└── checklist.dsl (31 lines, ~170 tokens)
-    ├── Basic checklist
-    └── Development checklist
-```
-
-## 6. Token Efficiency Comparison
+## 5. Token Efficiency Comparison
 
 ```mermaid
 graph LR
@@ -109,7 +92,7 @@ graph LR
     G[Unified DSL] -->|1,250 tokens| H[All tasks<br/>Fixed overhead]
 ```
 
-## 7. Conditional Loading Logic
+## 6. Conditional Loading Logic
 
 ```yaml
 # Core DSL decides loading strategy
@@ -126,7 +109,7 @@ rules:
       message: "Complete ALL validation requirements"
 ```
 
-## 8. Enforcement Mechanisms
+## 7. Enforcement Mechanisms
 
 ```mermaid
 flowchart TD
@@ -147,4 +130,4 @@ flowchart TD
 3. **Modular Design**: Separate concerns across files
 4. **Token Efficiency**: 92.2% reduction for development tasks
 5. **Strict Enforcement**: No exceptions to validation rules
-6. **Japanese Communication**: Built-in language requirements
+6. **Language Requirements**: Built-in Japanese communication rules

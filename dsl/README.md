@@ -43,6 +43,10 @@ Structured engineering guide in Claude DSL v0.3 format
 | Non-dev | 484 | 190 | 1,250 | 60.7% reduction |
 | Development | 5,518 | 430 | 1,250 | 92.2% reduction |
 
+## Processing Flow
+
+See [FLOW.md](FLOW.md) for detailed processing flow diagrams and explanations.
+
 ## Benefits
 
 - **Massive token reduction** (up to 92.2%)
