@@ -8,6 +8,9 @@
 - Always read CLAUDE.md at task start to confirm latest status
 - Execute all checklist items before proceeding to next step  
 - Ask questions in Japanese, require Japanese responses
+- **Development task definition: Implementation + All validations passed = Development complete**
+- **Development is NOT complete until validation_passed = true**
+- **FORBIDDEN: Reporting to user before development is complete**
 
 Follow this Claude DSL v0.3:
 
@@ -53,6 +56,54 @@ claude_dsl:
       - "test_api_with_real_requests"
       - "screenshot_or_demonstrate_behavior"
       - "verify_startup_success"
+    
+    mandatory_validation:
+      halt_condition: "validation_passed = false"
+      enforcement: "STRICT - No exceptions"
+      definition: "Development task = Implementation + All validations passed"
+      user_report_rule: "NO user reporting until validation_passed = true"
+      
+    validation_requirements:
+      all_must_complete:
+        - server_startup_verification
+        - client_startup_verification
+        - end_to_end_functionality_test
+        - critical_path_manual_verification
+        - api_request_testing
+        - screenshot_capture
+      
+      failure_response:
+        action: "IMMEDIATE_HALT"
+        message: "Task FAILED. Missing validation steps detected."
+        
+    validation_execution:
+      server_test:
+        command: "npm run server"
+        verify: "Server running on expected port"
+        logs: "Capture startup logs"
+      
+      client_test:
+        command: "npm start" 
+        verify: "Application loads in browser"
+        url: "http://localhost:3000"
+        
+      functionality_test:
+        steps:
+          - "Join room with test ID"
+          - "Send message from user A"
+          - "Verify message received by user B"
+          - "Confirm real-time communication"
+          
+    post_validation:
+      required_artifacts:
+        - "Startup confirmation screenshots"
+        - "Working application demonstration"
+        - "Test execution logs"
+      
+      completion_criteria:
+        - "All validation steps executed"
+        - "No critical failures detected"
+        - "validation_passed = true"
     
     mandatory_rules:
       process: "Start with classification, end with checklist"
@@ -140,6 +191,7 @@ claude_dsl:
         rule: "How can this break production?"
       validate_before_feedback:
         rule: "Code compiles, tests pass, works correctly"
+        critical: "Implementation alone = INCOMPLETE. Development complete ONLY after all validations pass"
     
     validation_rules:
       - "test_end_to_end_user_experience"
@@ -156,6 +208,23 @@ claude_dsl:
         - "Screenshot or demonstrate"
         - "Test API with real requests"
         - "Verify startup success"
+    
+    testing_requirements:
+      R0: 
+        coverage: "100%"
+        mutation: "95%"
+        tests: "Unit + Integration + E2E"
+        performance: "Load testing required"
+      R1:
+        coverage: "95%"
+        mutation: "90%"
+        tests: "Unit + Integration"
+        performance: "Basic benchmarks"
+      R2:
+        coverage: "90%"
+        mutation: "80%"
+        tests: "Unit + Happy path"
+        performance: "Manual validation"
     
     code_style:
       - "Readability > Cleverness"
