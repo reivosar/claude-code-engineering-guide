@@ -32,8 +32,8 @@ This repository provides the same engineering guide in two different formats:
 ### File Count & Lines
 | Format | File Count | Total Lines | Change |
 |--------|------------|-------------|--------|
-| Markdown | 8 files | 594 lines | Baseline |
-| DSL | 4 files | 193 lines | **67.5% reduction** |
+| Markdown | 9 files | 591 lines | Baseline |
+| DSL | 5 files | 639 lines | **8% increase** |
 
 ### Token Usage
 
@@ -60,7 +60,7 @@ This repository provides the same engineering guide in two different formats:
 | **Extensibility** | Markdown editing | YAML structure editing |
 | **Conditional Logic** | Human judgment dependent | DSL automated processing |
 | **Variables** | ❌ Not supported | ✅ Supported (risk levels, etc.) |
-| **Token Efficiency** | Standard | Dramatically improved |
+| **Token Efficiency** | Standard | Improved for development tasks |
 
 ## Quick Start
 
