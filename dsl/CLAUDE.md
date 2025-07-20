@@ -1,5 +1,14 @@
 # CLAUDE.md - DSL Version
 
+## MANDATORY Process
+
+**Start: Read CLAUDE.md / End: Execute checklist.dsl**
+
+**MANDATORY RULES:**
+- Always read CLAUDE.md at task start to confirm latest status
+- Execute all checklist items before proceeding to next step  
+- Ask questions in Japanese, require Japanese responses
+
 Follow this Claude DSL v0.3:
 
 ```yaml
@@ -48,6 +57,9 @@ claude_dsl:
     mandatory_rules:
       process: "Start with classification, end with checklist"
       checklist_skip: "If skip checklist = task failed"
+      read_claude_md: "Always read CLAUDE.md at task start to confirm latest status"
+      complete_checklist: "Execute all checklist items before proceeding to next step"
+      japanese_communication: "Ask questions in Japanese, require Japanese responses"
   
   rules:
     - if: not validation_passed
