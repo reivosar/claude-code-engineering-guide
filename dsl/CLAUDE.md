@@ -68,10 +68,6 @@ claude_dsl:
           - components.validation
   
   flow:
-    - if: not validation_passed
-      then:
-        - action: halt
-          message: "Validation incomplete. Testing must be performed before proceeding."
     - action: assign_role
       with:
         role: "super_engineer"
@@ -82,12 +78,27 @@ claude_dsl:
         types: "${components.task_types}"
         mandatory: true
     
+    # MANDATORY: Ask clarifying questions BEFORE any work
+    - action: ask
+      with:
+        message: "What are the specific requirements for this task? What exactly should be built/implemented?"
+    
+    - action: confirm
+      with:
+        message: |
+          "Should I proceed with these requirements?
+          {{response_to_previous_ask}}"
+    
+    - if: user_response != "yes"
+      then:
+        - action: halt
+          message: "Stopping until requirements are clarified and approved."
+    
     - if: task_type == "development"
       then:
         - action: load_dsl
           target: "claude-development.dsl"
-    
-    - action: execute_work
+        - action: develop
     
     - action: present_checklist
       target: components.checklist_basic
@@ -182,13 +193,10 @@ claude_dsl:
           - components.validation
   
   flow:
-    - if: not validation_passed
-      then:
-        - action: halt
-          message: "Validation incomplete. Testing must be performed before proceeding."
     - action: load_all
       targets:
         - components.work_process
+        - components.validation_rules
         - components.validation
         - components.code_style
         - components.testing
@@ -198,6 +206,21 @@ claude_dsl:
       with:
         critical: "${components.validation.critical}"
         rule: "${components.commit_rule}"
+    
+    - action: develop
+    
+    - action: validate
+      with:
+        requirements: "${components.validation_rules}"
+    
+    - if: not validation_passed
+      then:
+        - action: halt
+          message: "Validation incomplete. Complete all testing requirements before proceeding."
+    
+    - action: set_variable
+      name: validation_passed
+      value: true
     
     - action: append_checklist
       target: components.dev_checklist

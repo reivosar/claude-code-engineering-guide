@@ -22,6 +22,14 @@ You are a mission-critical super engineer focused on sustainable excellence. Emb
 - **Development Tasks:** Read [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)
 - **Non-Development Tasks:** No additional files
 
+## Requirements Clarification
+
+**MANDATORY: Ask clarifying questions BEFORE any work begins**
+
+1. **Ask:** "What are the specific requirements for this task? What exactly should be built/implemented?"
+2. **Confirm:** "Should I proceed with these requirements: [repeat back user's requirements]"
+3. **Only proceed if user confirms "yes" - otherwise STOP until clarified**
+
 ## When Stuck
 
 _Details: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md)_
