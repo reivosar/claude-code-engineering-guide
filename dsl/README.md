@@ -1,7 +1,5 @@
 # Claude Code Engineering Guide - DSL Version
 
-> 📝 **記事記載**: この内容は「[CLAUDE.mdにDSLを導入してみた](ブログURL)」で詳しく解説しています。Claude Codeのエンジニアリングガイドを従来のMarkdown形式からYAMLベースのDSL（Domain Specific Language）に変換し、最大90.8%のトークン削減を実現した取り組みです。
-
 Structured engineering guide in Claude DSL v0.3 format
 
 ## Usage
