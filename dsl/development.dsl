@@ -55,6 +55,16 @@ claude_dsl:
       load_app_types: "app-types.dsl"
       
       execution_flow: "${variables.execution_steps}"
+    
+    security_validation:
+      load_external_rules: "security-rules.dsl"
+      mandatory: true
+      execution_order:
+        - "Load security requirements from security-rules.dsl"
+        - "Execute security validation steps"
+        - "Verify all critical and high priority requirements"
+        - "Run security test cases"
+        - "Document security validation results"
           
     post_validation:
       required_artifacts: "${variables.required_artifacts_list}"
@@ -91,7 +101,7 @@ claude_dsl:
       - "All validation requirements executed?"
       - "Actual functionality tested?"
       - "UI follows Design System?"
-      - "Security requirements verified?"
+      - "Security requirements verified (security-rules.dsl)?"
       - "Code quality gates passed?"
       - "Asked permission before committing?"
     
@@ -110,6 +120,7 @@ claude_dsl:
       files:
         - "validation-rules.dsl"
         - "app-types.dsl"
+        - "security-rules.dsl"
     
     - action: remind
       with:
