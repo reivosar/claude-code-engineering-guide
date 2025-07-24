@@ -35,11 +35,6 @@ claude_dsl:
     
     checklist_basic: "${variables.checklist_questions}"
     
-    
-      
-        
-          
-    
     mandatory_rules: "${variables.mandatory_rules_list}"
   
   rules:
