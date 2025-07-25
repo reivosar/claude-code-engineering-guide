@@ -4,11 +4,33 @@
 
 ## Work Process (Development-Specific)
 
+### Mandatory Task Execution Sequence
+1. **Read and understand requirements**
+2. **Ask clarifying questions in Japanese**
+3. **Get explicit approval to proceed** 
+4. **Implement solution**
+5. **Validate implementation**
+6. **Report results with evidence**
+
+### Core Work Process Rules
 - **Clarify requirements obsessively**: Ask "what exactly should this do?" until crystal clear
 - **Assess risk level first**: Classify changes as R0 (mission-critical), R1 (important), R2 (experimental)
 - **Define success criteria upfront**: Business metrics, performance targets, rollback conditions
 - **Think in failure modes**: For every feature, ask "how can this break production?"
 - **Validate before requesting feedback**: Only seek stakeholder review after code compiles, tests pass, and functionality works correctly
+
+### Communication Behavior
+- **Language requirement**: Ask questions in Japanese, require Japanese responses
+- **Tone**: Direct and concise professional engineering communication
+- **Permission requests**: Always ask permission before committing code or making significant changes
+- **Clarifying questions**: Ask "what exactly?" until requirements are crystal clear
+- **Error handling**: Stop immediately on validation failure, report specific failure reason
+
+### Validation Behavior
+- **Halt condition**: validation_passed = false
+- **Enforcement**: STRICT - No exceptions
+- **Definition**: Development task = Implementation + All validations passed
+- **User report rule**: NO user reporting until validation_passed = true
 
 ## Core Development Principles
 
@@ -30,6 +52,7 @@
 
 **CRITICAL: Server startup logs ≠ Working application**
 
+### Mandatory Validation Steps
 - **Always test the actual user experience**: Visit the URL, click buttons, verify responses
 - **Verify all critical paths manually**: Login flow, main features, error handling
 - **Screenshot or demonstrate actual behavior**: Never report success without visual proof
@@ -40,6 +63,12 @@
 - **Always verify end-to-end functionality**: Test actual screens, API responses, and user flows
 - **Never assume based on logs alone**: Logs lie - verify with eyes and real requests
 
+### Validation Enforcement
+- **Halt condition**: All development stops if validation_passed = false
+- **No user reporting**: FORBIDDEN to report completion until all validations pass
+- **Evidence required**: Provide concrete proof of functionality (screenshots, test results, API responses)
+- **End-to-end verification**: Test complete user workflows, not just individual components
+
 ## Code Style Guidelines
 
 **SUMMARY**: 10 language-agnostic principles (readability, complexity <=10, small units). Community standards + pragmatic exceptions for generated code/performance.
@@ -47,7 +76,7 @@ _Details: [docs/CODE_STYLE.md](docs/CODE_STYLE.md)_
 
 ## Testing Requirements
 
-**SUMMARY**: Risk-stratified coverage (R0: 100/95%, R1: 95/90%, R2: 90/80%). Differential coverage for legacy. Performance tests required for R0/R1.
+**SUMMARY**: Risk-stratified coverage (R0: 100%/100%/95%, R1: 95%/90%/90%, R2: 90%/85%/80% line/branch/mutation). Differential coverage for legacy. Performance tests required for R0/R1.
 _Details: [docs/TESTING.md](docs/TESTING.md)_
 
 ## Quality Gates
@@ -57,7 +86,7 @@ _Details: [docs/QUALITY_GATES.md](docs/QUALITY_GATES.md)_
 
 ## Repository Flow
 
-**SUMMARY**: Branch naming TYPE/description-issue. PR templates with business impact. Risk-appropriate reviewers (R0: 3+, R1: 2+, R2: 1+). Squash merge only.
+**SUMMARY**: Branch naming PREFIX/descriptive-name. PR templates with business impact. Risk-appropriate reviewers (R0: 3+, R1: 2+, R2: 1+). Squash merge default.
 _Details: [docs/REPO_FLOW.md](docs/REPO_FLOW.md)_
 
 ## Exceptions & Large Refactors
@@ -82,18 +111,84 @@ _Details: [docs/REPO_FLOW.md](docs/REPO_FLOW.md)_
 
 **MANDATORY: Always use Digital Agency Design System for all UI implementations**
 
-- **Primary Design System**: デジタル庁デザインシステム (https://design.digital.go.jp/)
-- **Components**: Use official components, tokens, and patterns from the design system
-- **Accessibility**: Follow WCAG 2.1 AA standards as required by the design system
-- **Typography**: Use designated fonts and text scales from the design system
-- **Color Palette**: Use only approved colors from the design system token library
-- **Spacing**: Follow the design system's spacing tokens and grid system
-- **Icons**: Use icons from the design system icon library
-- **Form Elements**: Implement form components according to design system specifications
-- **Navigation**: Follow navigation patterns specified in the design system
-- **Responsive Design**: Implement responsive breakpoints as defined in the design system
-- **NO CUSTOM CSS**: Do not create custom styles that deviate from the design system
+### Primary Design System
+- **System**: Digital Agency Design System (https://design.digital.go.jp/)
+- **Configurable**: Design system can be changed if business requirements demand it
 - **Documentation**: Reference design system documentation for all UI decisions
+
+### Design System Compliance
+- **Components**: Use official components, tokens, and patterns from the design system
+- **NO CUSTOM CSS**: Do not create custom styles that deviate from the design system without approval
+- **Exceptions**: Document and get approval for business critical requirements that require deviations
+- **Process**: Business critical requirement → Document exception → Get approval → Implement
+
+### Accessibility Requirements (WCAG 2.1 AA)
+- **Keyboard navigation support**
+- **Screen reader compatibility** 
+- **Color contrast compliance**
+- **Focus indicators visible**
+- **Alt text for images**
+- **ARIA labels where needed**
+
+### Responsive Design Standards
+- **Mobile-first approach**
+- **Breakpoints**: Mobile (320px), Tablet (768px), Desktop (1024px), Wide (1440px)
+- **Fluid typography**
+- **Flexible images**
+- **Progressive enhancement**
+
+### Performance Standards
+- **FCP**: < 1.8s
+- **LCP**: < 2.5s  
+- **FID**: < 100ms
+- **CLS**: < 0.1
+- **Optimization**: Lazy load images, code split by route, minimize bundle size, cache static assets
+
+## Unexpected Situation Handling
+
+### When Unexpected Issues Occur
+1. **Stop current execution immediately**
+2. **Analyze the unexpected situation**
+3. **Ask user for clarification if needed**  
+4. **Propose solution approach**
+5. **Get user approval before proceeding**
+6. **Implement solution**
+7. **Verify solution works**
+8. **Resume normal flow**
+
+### Error Analysis Process
+- **Read all error messages completely**
+- **Identify what was expected vs what happened**
+- **Check recent changes that might have caused this**
+- **Look for similar issues in documentation**
+- **Gather all relevant context**
+
+### Communication During Problems
+- **Report the problem clearly in Japanese**
+- **Explain what went wrong**
+- **Describe what you tried to do**
+- **Present possible solutions**
+- **Ask for user's preferred approach**
+- **Never guess or assume solutions**
+
+### Recovery Strategies
+- **When stuck**: Stop and ask user for help, explain exactly where you're stuck
+- **When confused**: Admit confusion immediately, ask clarifying questions
+- **When something breaks**: Stop immediately, document current state, report what broke and when
+
+### Solution Implementation
+- **Start with the least risky solution**
+- **Make one change at a time**
+- **Test each change immediately**
+- **Document what was changed and why**
+- **Revert if solution makes things worse**
+
+### Never Do
+- Never proceed without understanding the problem
+- Never skip reporting unexpected issues
+- Never assume the problem will resolve itself
+- Never make random changes hoping they work
+- Never ignore error messages
 
 ## Development Task Completion Checklist
 
@@ -106,5 +201,6 @@ _Details: [docs/REPO_FLOW.md](docs/REPO_FLOW.md)_
 5. **Security requirements verified**
 6. **Code quality gates passed**
 7. **Ask permission before committing any files**
+8. **validation_passed = true**
 
 **If you committed without permission = You failed the task**

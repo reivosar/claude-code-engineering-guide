@@ -2,27 +2,61 @@
 
 ## Branch Strategy
 
-### Branch Types
+### Branch Types & Prefixes
 
 - **main**: Production-ready code, always deployable
 - **feature/\***: New functionality development
-- **refactor/\***: Code structure improvements
-- **fix/\***: Bug corrections
+- **bugfix/\***: Bug corrections and fixes
 - **hotfix/\***: Critical production fixes
+- **release/\***: Release preparation
+- **chore/\***: Maintenance and housekeeping
+- **refactor/\***: Code structure improvements
 - **experimental/\***: R2 experimental features
 
-### Naming Convention
+### Branch Naming Convention
 
 ```
-TYPE/description-issue-number
+PREFIX/descriptive-name
 
 Examples:
-feature/user-authentication-123
-refactor/extract-payment-service-456
-fix/memory-leak-orders-789
-hotfix/critical-security-patch-012
-experimental/new-search-algorithm-345
+feature/add-user-authentication
+bugfix/fix-login-redirect
+hotfix/patch-security-vulnerability
+chore/update-dependencies
+release/v2.1.0
 ```
+
+### Branch Rules
+- **Branch from main/master**: Always start from the main branch
+- **Use descriptive names**: Clear indication of what the branch does
+- **Include ticket number if applicable**: Link to tracking system
+- **Keep branches short-lived**: Merge within days, not weeks
+
+## Commit Standards
+
+### Commit Message Format
+```
+<type>(<scope>): <subject>
+
+<body - explain WHY not WHAT>
+
+Closes #<issue>
+```
+
+### Commit Types
+- **feat**: new feature
+- **fix**: bug fix
+- **docs**: documentation
+- **style**: formatting changes
+- **refactor**: code restructuring
+- **test**: test updates
+- **chore**: maintenance tasks
+
+### Commit Rules
+- **Use imperative mood**: "Add feature" not "Added feature"
+- **Keep subject line under 72 characters**
+- **Explain WHY in body if needed**: Context and reasoning
+- **Reference issues/tickets**: Link to tracking system
 
 ## Pull Request Management
 
@@ -76,11 +110,15 @@ experimental/new-search-algorithm-345
 - [ ] Alerts configured
 - [ ] Business KPI tracking (R0 only)
 
-## Checklist
+## PR Checklist
 
+- [ ] Tests pass
+- [ ] Code reviewed
 - [ ] Code follows style guidelines
 - [ ] Self-review completed
 - [ ] Documentation updated
+- [ ] No console errors
+- [ ] Screenshots if UI changes
 - [ ] Breaking changes documented
 ```
 
@@ -114,9 +152,17 @@ experimental/new-search-algorithm-345
 
 ### Merge Types
 
-- **Squash merge**: Default for all changes
-- **Merge commit**: Only for large feature integration
-- **Rebase**: Never used (maintain true history)
+- **Default**: Squash and merge for standard changes
+- **Exceptions**:
+  - Feature branches: Merge commit to preserve feature history
+  - Release branches: Merge commit for release tracking
+- **Never**: Rebase (maintain true history)
+
+### Approval Requirements
+
+- **Require PR approval**: Based on risk level (R0: 3+, R1: 2+, R2: 1+)
+- **Pass all CI checks**: Automated testing and quality gates
+- **Update from main before merge**: Ensure current with latest changes
 
 ### Post-Merge Actions
 
