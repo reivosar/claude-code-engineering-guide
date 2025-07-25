@@ -33,7 +33,7 @@ This repository provides the same engineering guide in two different formats:
 | Format | File Count | Total Lines | Change |
 |--------|------------|-------------|--------|
 | Markdown | 9 files | 591 lines | Baseline |
-| DSL | 5 files | 398 lines | **33% reduction** |
+| DSL | 30 files | 1,489 lines | **Modular structure** |
 
 ### Token Usage
 
@@ -56,7 +56,7 @@ This repository provides the same engineering guide in two different formats:
 | **Claude Code Support** | ✅ Auto-loaded | ✅ Auto-loaded |
 | **Setup** | Copy files only | Copy files only |
 | **Readability** | High (natural language) | Structured (learning curve) |
-| **Maintainability** | Distributed file management | Single DSL management |
+| **Maintainability** | Distributed file management | Modular DSL management |
 | **Extensibility** | Markdown editing | YAML structure editing |
 | **Conditional Logic** | Human judgment dependent | DSL automated processing |
 | **Variables** | ❌ Not supported | ✅ Supported (risk levels, etc.) |

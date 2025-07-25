@@ -1,68 +1,232 @@
 # Claude Code Engineering Guide - DSL Version
 
-Structured engineering guide in Claude DSL v0.3 format
+Modular engineering framework in Claude DSL v0.3 format with category-specific rule organization.
 
-## Usage
+## Quick Start
 
-### Method 1: Main DSL (Recommended)
+### Simple Method (Recommended)
+```
+Follow entry-point.dsl for complete DSL execution.
+```
 
-1. **At session start, instruct**:
-   ```
-   Follow entry-point.dsl for complete DSL execution.
-   ```
+### Advanced Method (Full Control)
+```
+Follow this Claude DSL v0.3:
+[Copy entry-point.dsl content here]
+```
 
-### Method 2: Split DSL (Advanced)
+## Architecture Overview
 
-1. **At session start, instruct**:
-   ```
-   Follow this Claude DSL v0.3:
-   [entry-point.dsl content]
-   ```
+The DSL system uses a **modular architecture** with category-specific directories for better organization and maintainability:
 
-2. **For development tasks, additionally**:
-   ```
-   For development tasks, also load this DSL:
-   [development.dsl content]
-   ```
+```
+dsl/
+├── entry-point.dsl          # Main orchestrator
+├── development.dsl          # Development workflow
+├── CLAUDE.md               # Session entry point
+├── behavior-rules/         # Claude's operational behaviors
+├── coding-rules/           # Code quality and standards
+├── design-rules/           # UI/UX and documentation
+├── git-rules/              # Git workflow operations
+├── security-rules/         # Security requirements
+└── validation-rules/       # Correctness verification
+```
 
-### Method 3: Unified DSL
+## File Structure Details
 
-1. **At session start, instruct**:
-   ```
-   Follow this Claude DSL v0.3:
-   [validation-rules.dsl content]
-   ```
+### Core Files (Always Loaded)
+- **`CLAUDE.md`** (15 lines) - Mandatory session entry point
+- **`entry-point.dsl`** (94 lines) - Main DSL orchestrator with component loading
+- **`development.dsl`** (119 lines) - Development workflow with conditional module loading
 
-## File Structure
+### Module Categories
 
-### Main DSL (Recommended)
-- `CLAUDE.md` - Entry point with mandatory rules (15 lines, ~80 tokens)
-- `entry-point.dsl` - Main DSL execution logic (94 lines, ~400 tokens)
+#### behavior-rules/ (7 files, 312 lines)
+Claude's operational behaviors and error handling:
+- `communication-behavior.dsl` - User interaction patterns
+- `work-process-behavior.dsl` - Task execution workflows
+- `task-classification-behavior.dsl` - Task type identification
+- `failure-recovery-behavior.dsl` - Error recovery strategies
+- `unexpected-situation-behavior.dsl` - Handling unforeseen events
+- `debugging-analysis-behavior.dsl` - Problem diagnosis methods
+- `index.dsl` - Module loader
 
-### Split Version (Advanced)
-- `development.dsl` - Development-specific (119 lines, ~350 tokens)
-- `checklist.dsl` - Shared checklists (31 lines, ~170 tokens)
-- `validation-rules.dsl` - Program correctness validation (63 lines, ~280 tokens)
-- `app-types.dsl` - Application type definitions (62 lines, ~270 tokens)
+#### coding-rules/ (4 files, 201 lines)
+Code quality and development standards:
+- `code-style.dsl` - Readability, complexity, and organization rules
+- `testing-strategy.dsl` - Testing requirements and methodologies
+- `monitoring-logging.dsl` - Logging standards and metrics collection
+- `index.dsl` - Module loader
 
+#### design-rules/ (3 files, 114 lines)
+UI/UX standards and documentation:
+- `ui-ux-standards.dsl` - Design system compliance and accessibility
+- `documentation.dsl` - Documentation requirements and standards
+- `index.dsl` - Module loader
+
+#### security-rules/ (5 files, 218 lines)
+Comprehensive security requirements:
+- `universal-security.dsl` - Cross-cutting security requirements
+- `application-security.dsl` - App-specific security measures
+- `architecture-security.dsl` - System-level security design
+- `security-validation.dsl` - Security testing and verification
+- `index.dsl` - Module loader
+
+#### validation-rules/ (4 files, 172 lines)
+Correctness verification and validation:
+- `correctness-verification.dsl` - Code correctness checking
+- `verification-process.dsl` - Testing and validation workflows
+- `validation-enforcement.dsl` - Enforcement mechanisms
+- `index.dsl` - Module loader
+
+#### git-rules/ (2 files, 54 lines)
+Git workflow and operations:
+- `git-workflow.dsl` - Git operations and commit standards
+- `index.dsl` - Module loader
+
+### Support Files
+- **`checklist.dsl`** (31 lines) - Final verification checklist
+- **`app-types.dsl`** (62 lines) - Application type definitions
+- **`risk-assessment.dsl`** (41 lines) - Risk evaluation framework
+
+## Key Features
+
+### 1. Conditional Loading
+```yaml
+action: load_on_demand
+condition: "requires_code_quality"
+files:
+  - "coding-rules/index.dsl"
+```
+
+### 2. Variable System
+```yaml
+variables:
+  design_system: "Digital Agency Design System"
+  validation_passed: false
+```
+
+### 3. Cross-References
+Modules reference each other to eliminate duplication:
+- Security rules reference logging standards from coding-rules
+- Design rules reference monitoring from coding-rules
+- All modules use unified validation variables
+
+### 4. Hierarchical Index System
+Each category has an `index.dsl` that loads related files, enabling:
+- Selective loading based on task requirements
+- Clear dependency management
+- Easier maintenance and updates
 
 ## Token Efficiency
 
-| Task Type | Markdown | Main DSL | Split DSL | Unified DSL | Best Reduction |
-|-----------|----------|----------|-----------|-------------|----------------|
-| Non-dev | 374 | 629 | 293 | 1,353 | 21.7% (Split) |
-| Development | 3,764 | 1,508 | 1,341 | 1,353 | 64.4% (Split) |
+### Current Statistics
+| Metric | Count |
+|--------|-------|
+| **Total Files** | 30 DSL files |
+| **Total Lines** | 1,489 lines |
+| **Estimated Tokens** | ~1,800-2,400 tokens (full load) |
 
-*All calculations include actual file content tokens (word count × 1.25)
+### Loading Strategies
+| Strategy | Files Loaded | Estimated Tokens | Use Case |
+|----------|--------------|------------------|----------|
+| **Minimal** | entry-point.dsl only | ~400 tokens | Simple tasks |
+| **Conditional** | Based on task type | ~800-1,200 tokens | Development tasks |
+| **Full Load** | All modules | ~2,400 tokens | Complex projects |
+
+### Compared to Markdown Version
+- **Markdown**: 9 files, 591 lines, ~740 tokens (always loaded)
+- **DSL**: 30 files, 1,489 lines, **conditional loading** (400-2,400 tokens)
+
+## Usage Patterns
+
+### For Simple Tasks
+```
+Follow entry-point.dsl for complete DSL execution.
+```
+→ Loads only core files (~400 tokens)
+
+### For Development Projects
+```
+Follow entry-point.dsl for complete DSL execution.
+```
+→ Conditionally loads relevant modules (~800-1,200 tokens)
+
+### For Complex Security Projects
+```
+Follow entry-point.dsl for complete DSL execution.
+```
+→ Loads all security and validation modules (~1,800 tokens)
+
+## Benefits of Modular Architecture
+
+### 1. **Maintainability**
+- Clear separation of concerns
+- Easy to update specific rule categories
+- Consistent cross-references prevent duplication
+
+### 2. **Performance**
+- Load only what's needed for the task
+- Reduced token usage for simple tasks
+- Conditional loading based on requirements
+
+### 3. **Extensibility**
+- Add new rule categories easily
+- Extend existing categories without affecting others
+- Version consistency across all modules (v0.3)
+
+### 4. **Clarity**
+- Category-specific organization
+- Clear file naming conventions
+- Hierarchical index system for easy navigation
 
 ## Processing Flow
 
-See [FLOW.md](FLOW.md) for detailed processing flow diagrams and explanations.
+1. **Session Start**: Load `CLAUDE.md`
+2. **DSL Execution**: Process `entry-point.dsl`
+3. **Task Analysis**: Determine required modules
+4. **Conditional Loading**: Load relevant rule categories
+5. **Cross-Reference Resolution**: Apply unified variables and references
+6. **Execution**: Follow loaded rules and workflows
 
-## Benefits
+## Migration from Previous Versions
 
-- **Significant token reduction** (up to 64.4% for development tasks)
-- **Structured definitions** (variables, components, rules)
-- **Conditional logic and flow control**
-- **Modular file management** with selective loading
-- **AI-optimized format** for improved parsing efficiency
+### From Single-File DSL
+- Rules are now organized by category
+- Variables are unified across modules
+- Loading is now conditional and optimized
+
+### From Markdown Version
+- All functionality preserved
+- Added structured conditional logic
+- Significant token reduction for development tasks
+
+## Advanced Configuration
+
+### Custom Loading Patterns
+Modify `development.dsl` to customize which modules load for specific task types:
+
+```yaml
+action: load_on_demand
+condition: "custom_condition"
+files:
+  - "custom-rules/index.dsl"
+```
+
+### Variable Customization
+Update variables in individual modules to customize behavior:
+- Design system selection in `design-rules/ui-ux-standards.dsl`
+- Security standards in `security-rules/universal-security.dsl`
+- Code quality thresholds in `coding-rules/code-style.dsl`
+
+## Troubleshooting
+
+### Common Issues
+1. **Module Not Loading**: Check condition logic in `development.dsl`
+2. **Variable Conflicts**: Ensure variable names are consistent across modules
+3. **Missing Cross-References**: Verify references point to correct module paths
+
+### Debug Information
+- All files use DSL version 0.3
+- Variables use consistent naming: `validation_passed`, `design_system`
+- Cross-references use relative paths: `coding-rules/monitoring-logging.dsl`
