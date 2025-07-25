@@ -1,0 +1,36 @@
+claude_dsl:
+  version: "0.3"
+  
+  components:
+    universal_security_requirements:
+      critical:
+        input_validation:
+          - "Validate all external inputs"
+          - "Implement proper data type checking"
+          - "Handle null/undefined values safely"
+          - "Prevent injection attacks through input sanitization"
+        
+        error_handling:
+          - "Never expose sensitive information in error messages"
+          - "Log security events appropriately (see coding-rules/monitoring-logging.dsl for log levels)"
+          - "Fail securely (default deny)"
+          - "Implement proper exception handling"
+        
+        authentication_authorization:
+          - "Implement proper authentication (if applicable)"
+          - "Enforce authorization checks"
+          - "Secure credential storage"
+          - "Session management security"
+      
+      high:
+        data_protection:
+          - "Encrypt sensitive data at rest"
+          - "Secure data transmission"
+          - "Implement proper key management"
+          - "Follow data privacy regulations"
+        
+        logging_monitoring:
+          - "Log security-relevant events (see coding-rules/monitoring-logging.dsl for standards)"
+          - "Protect log integrity"
+          - "Monitor for security incidents"
+          - "Implement audit trails"

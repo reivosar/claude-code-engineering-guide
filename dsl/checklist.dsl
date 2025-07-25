@@ -18,13 +18,6 @@ claude_dsl:
       classification:
         - "Read required additional files?"
         - "Followed appropriate process for task type?"
-      development_specific:
-        - "All validation requirements executed"
-        - "Actual functionality tested (not just logs)"
-        - "UI follows Design System (if applicable)"
-        - "Security requirements verified"
-        - "Code quality gates passed"
-        - "Ask permission before committing any files"
       final:
         - "Did I follow every principle like my job depends on it?"
     

@@ -45,9 +45,8 @@ claude_dsl:
     - if: task_type == "development"
       then:
         include:
-          - components.validation_rules
-          - components.work_process
-          - components.validation
+          - components.validation_execution
+          - components.validation_principles
   
   flow:
     - action: assign_role

@@ -8,7 +8,7 @@ claude_dsl:
       - "verify_critical_paths_manually"
       - "test_api_with_real_requests"
     execution_steps:
-      - "Load validation rules from validation-rules.dsl"
+      - "Load validation rules from validation-rules/"
       - "Load application type definitions from app-types.dsl"
       - "Identify target application type and architecture"
       - "Execute appropriate validation sequence"
@@ -23,109 +23,88 @@ claude_dsl:
       - "validation_passed = true"
   
   components:
-    work_process:
-      clarify_requirements:
-        rule: "Ask 'what exactly?' until crystal clear"
-      assess_risk:
-        rule: "Classify as R0/R1/R2"
-      define_success:
-        rule: "Business metrics, performance targets"
-      think_failure_modes:
-        rule: "How can this break production?"
-      validate_before_feedback:
-        rule: "Code compiles, tests pass, works correctly"
+    validation_principles:
+      critical: "Server startup logs ≠ Working application"
     
-    validation_rules: "${variables.validation_order}"
-    
-    mandatory_validation:
-      halt_condition: "validation_passed = false"
-      enforcement: "STRICT - No exceptions"
-      definition: "Development task = Implementation + All validations passed"
-      user_report_rule: "NO user reporting until validation_passed = true"
-      
-    validation_requirements:
-      all_must_complete: "${variables.validation_order}"
-      
-      failure_response:
-        action: "IMMEDIATE_HALT"
-        message: "Task FAILED. Missing validation steps detected."
-        
     validation_execution:
-      load_external_rules: "validation-rules.dsl"
-      load_app_types: "app-types.dsl"
-      
+      rules: "${variables.validation_order}"
+      requirements:
+        all_must_complete: "${variables.validation_order}"
+        failure_response:
+          action: "IMMEDIATE_HALT"
+          message: "Task FAILED. Missing validation steps detected."
+      basic_validation:
+        rules:
+          - "Test actual user experience"
+          - "Verify critical paths manually"
+          - "Test API with real requests"
+      load_on_execution:
+        - "validation-rules/index.dsl"
       execution_flow: "${variables.execution_steps}"
     
-    security_validation:
-      load_external_rules: "security-rules.dsl"
+    security_verification_process:
+      load_external_rules: "security-rules/index.dsl"
       mandatory: true
       execution_order:
-        - "Load security requirements from security-rules.dsl"
+        - "Load security requirements from security-rules/"
         - "Execute security validation steps"
         - "Verify all critical and high priority requirements"
         - "Run security test cases"
         - "Document security validation results"
           
-    post_validation:
+    completion_requirements:
       required_artifacts: "${variables.required_artifacts_list}"
-      
       completion_criteria: "${variables.completion_criteria_list}"
     
-    validation:
-      critical: "Server startup logs ≠ Working application"
-      rules:
-        - "Test actual user experience"
-        - "Verify critical paths manually"
-        - "Test API with real requests"
-    
-    code_style:
-      - "Readability > Cleverness"
-      - "Cyclomatic complexity ≤10"
-      - "Functions ≤50 lines"
-      - "Single responsibility"
-      - "Test-driven mindset"
-    
-    testing:
-      R0: { coverage: "100%", mutation: "95%" }
-      R1: { coverage: "95%", mutation: "90%" }
-      R2: { coverage: "90%", mutation: "80%" }
-    
-    ui_ux:
-      system: "Digital Agency Design System"
-      rules:
-        - "Use official components only"
-        - "NO CUSTOM CSS"
-        - "WCAG 2.1 AA required"
-    
-    dev_checklist:
+    development_checklist:
       - "All validation requirements executed?"
       - "Actual functionality tested?"
       - "UI follows Design System?"
-      - "Security requirements verified (security-rules.dsl)?"
+      - "Security requirements verified (security-rules/)?"
       - "Code quality gates passed?"
       - "Asked permission before committing?"
     
     commit_rule: "NEVER commit without permission"
   
   flow:
-    - action: load_all
-      targets:
-        - components.work_process
-        - components.validation
-        - components.code_style
-        - components.testing
-        - components.ui_ux
-    
     - action: load_external
       files:
-        - "validation-rules.dsl"
+        - "behavior-rules/index.dsl"
+    
+    - action: load_all
+      targets:
+        - components.validation_execution
+    
+    - action: load_on_demand
+      condition: "requires_risk_assessment"
+      files:
+        - "risk-assessment.dsl"
+    
+    - action: load_on_demand
+      condition: "requires_app_type_detection"
+      files:
         - "app-types.dsl"
-        - "security-rules.dsl"
+    
+    - action: load_on_demand
+      condition: "requires_code_quality"
+      files:
+        - "coding-rules/index.dsl"
+    
+    - action: load_on_demand
+      condition: "has_ui_components"
+      files:
+        - "design-rules/index.dsl"
+    
+    - action: load_on_demand
+      condition: "requires_git_operations"
+      files:
+        - "git-rules/index.dsl"
     
     - action: remind
       with:
-        critical: "${components.validation.critical}"
+        critical: "${components.validation_principles.critical}"
         rule: "${components.commit_rule}"
     
     - action: append_checklist
-      target: components.dev_checklist
+      target: components.development_checklist
+    

@@ -1,0 +1,51 @@
+claude_dsl:
+  version: "0.3"
+  
+  components:
+    test_failure_behavior:
+      on_test_failure:
+        - "Analyze failure reason"
+        - "Fix the underlying issue"
+        - "Re-run the failed test"
+        - "Repeat until all tests pass"
+        - "Never skip failing tests"
+      
+      failure_analysis:
+        - "Read error messages carefully"
+        - "Identify root cause, not symptoms"
+        - "Check recent changes that might cause failure"
+        - "Verify environment and dependencies"
+      
+      fix_strategy:
+        - "Make minimal changes to fix the issue"
+        - "Test the fix in isolation if possible"
+        - "Ensure fix doesn't break other functionality"
+        - "Document what was fixed and why"
+    
+    validation_failure_behavior:
+      on_validation_failure:
+        - "Stop current execution immediately"
+        - "Report specific failure details"
+        - "Implement required fixes"
+        - "Re-run validation from the beginning"
+        - "Continue only when validation_passed = true"
+      
+      retry_policy:
+        - "Fix and retry until success"
+        - "No limit on retry attempts"
+        - "Each retry must address the failure cause"
+        - "Never proceed with failing validations"
+    
+    build_failure_behavior:
+      on_build_failure:
+        - "Read compilation errors line by line"
+        - "Fix syntax and import errors"
+        - "Resolve dependency issues"
+        - "Re-run build process"
+        - "Repeat until build succeeds"
+      
+      common_fixes:
+        - "Check for missing imports"
+        - "Verify function signatures"
+        - "Fix syntax errors"
+        - "Resolve type mismatches"

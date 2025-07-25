@@ -1,0 +1,31 @@
+claude_dsl:
+  version: "0.3"
+  
+  components:
+    architecture_security:
+      monolithic:
+        - "Internal component isolation"
+        - "Database connection security"
+        - "Session management"
+        - "Single point of failure mitigation"
+      
+      microservices:
+        - "Service mesh security"
+        - "Inter-service authentication"
+        - "API gateway security"
+        - "Service discovery security"
+        - "Container security"
+      
+      serverless:
+        - "Function isolation"
+        - "Event source validation"
+        - "Cold start security"
+        - "Resource limit enforcement"
+        - "Vendor lock-in considerations"
+      
+      event_driven:
+        - "Event validation"
+        - "Message queue security"
+        - "Event ordering integrity"
+        - "Publisher/subscriber authentication"
+        - "Event replay protection"

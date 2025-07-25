@@ -1,0 +1,67 @@
+claude_dsl:
+  version: "0.3"
+  
+  variables:
+    coverage_targets:
+      R0: { line: 100, branch: 100, mutation: 95 }
+      R1: { line: 95, branch: 90, mutation: 90 }
+      R2: { line: 90, branch: 85, mutation: 80 }
+    
+    test_types:
+      - unit
+      - integration
+      - e2e
+      - performance
+      - security
+      - accessibility
+  
+  components:
+    test_pyramid:
+      unit_tests:
+        proportion: "70%"
+        characteristics:
+          - "Fast execution"
+          - "Isolated components"
+          - "Mock external dependencies"
+        requirements:
+          - "Test edge cases"
+          - "Test error conditions"
+          - "Test happy path"
+      
+      integration_tests:
+        proportion: "20%"
+        characteristics:
+          - "Test component interactions"
+          - "Use real dependencies when possible"
+          - "Verify data flow"
+      
+      e2e_tests:
+        proportion: "10%"
+        characteristics:
+          - "Test critical user journeys"
+          - "Verify end-to-end functionality"
+          - "Run in production-like environment"
+    
+    coverage_requirements:
+      by_risk_level:
+        R0: "${variables.coverage_targets.R0}"
+        R1: "${variables.coverage_targets.R1}"
+        R2: "${variables.coverage_targets.R2}"
+      
+      enforcement:
+        - "Coverage must meet targets before merge"
+        - "New code must not decrease coverage"
+        - "Mutation testing for critical paths"
+    
+    test_quality:
+      principles:
+        - "Tests should be deterministic"
+        - "Tests should be independent"
+        - "Tests should be readable"
+        - "Tests should be maintainable"
+      
+      anti_patterns:
+        - "Avoid testing implementation details"
+        - "Avoid brittle selectors"
+        - "Avoid shared test state"
+        - "Avoid slow tests without reason"
