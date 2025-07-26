@@ -219,12 +219,12 @@ flow:
   
   - action: report checklist
     target: components.checklist basic
-    claude_instruction: "CLAUDE: You MUST report which checklist items were completed and confirm all items are cleared."
+    claude_instruction: "CLAUDE: You MUST first verify completion of all checklist items yourself, then report the completed items to user with specific details."
   
   - action: confirm
     with:
       message: Did I follow every principle?
-    claude_instruction: "CLAUDE: You MUST ask user to confirm you followed all principles before considering task complete. CLAUDE asks this question to USER, not the other way around."
+    claude_instruction: "CLAUDE: After reporting your checklist completion, ask user to confirm you followed all principles."
   
   - action: ask commit
     with:
