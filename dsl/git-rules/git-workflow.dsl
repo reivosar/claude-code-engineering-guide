@@ -1,73 +1,70 @@
-claude_dsl:
-  version: "0.3"
+variables:
+  branch_prefixes:
+    feature: "feature/"
+    bugfix: "bugfix/"
+    hotfix: "hotfix/"
+    release: "release/"
+    chore: "chore/"
   
-  variables:
-    branch_prefixes:
-      feature: "feature/"
-      bugfix: "bugfix/"
-      hotfix: "hotfix/"
-      release: "release/"
-      chore: "chore/"
+  commit_types:
+    - "feat: new feature"
+    - "fix: bug fix"
+    - "docs: documentation"
+    - "style: formatting"
+    - "refactor: code restructuring"
+    - "test: test updates"
+    - "chore: maintenance"
+
+components:
+  branch_strategy:
+    naming: "${variables.branch_prefixes}"
+    rules:
+      - "Branch from main/master"
+      - "Use descriptive names"
+      - "Include ticket number if applicable"
+      - "Keep branches short-lived"
     
-    commit_types:
-      - "feat: new feature"
-      - "fix: bug fix"
-      - "docs: documentation"
-      - "style: formatting"
-      - "refactor: code restructuring"
-      - "test: test updates"
-      - "chore: maintenance"
+    examples:
+      - "feature/add-user-authentication"
+      - "bugfix/fix-login-redirect"
+      - "hotfix/patch-security-vulnerability"
   
-  components:
-    branch_strategy:
-      naming: "${variables.branch_prefixes}"
-      rules:
-        - "Branch from main/master"
-        - "Use descriptive names"
-        - "Include ticket number if applicable"
-        - "Keep branches short-lived"
-      
-      examples:
-        - "feature/add-user-authentication"
-        - "bugfix/fix-login-redirect"
-        - "hotfix/patch-security-vulnerability"
+  commit_standards:
+    format: "<type>(<scope>): <subject>"
+    types: "${variables.commit_types}"
+    rules:
+      - "Use imperative mood"
+      - "Keep subject line under 72 chars"
+      - "Explain WHY in body if needed"
+      - "Reference issues/tickets"
     
-    commit_standards:
-      format: "<type>(<scope>): <subject>"
-      types: "${variables.commit_types}"
-      rules:
-        - "Use imperative mood"
-        - "Keep subject line under 72 chars"
-        - "Explain WHY in body if needed"
-        - "Reference issues/tickets"
+    body_format: |
+      <subject>
       
-      body_format: |
-        <subject>
-        
-        <body - explain WHY not WHAT>
-        
-        Closes #<issue>
+      <body - explain WHY not WHAT>
+      
+      Closes #<issue>
+  
+  pr_requirements:
+    description:
+      - "Summary of changes"
+      - "Testing approach"
+      - "Screenshots if UI changes"
+      - "Breaking changes noted"
     
-    pr_requirements:
-      description:
-        - "Summary of changes"
-        - "Testing approach"
-        - "Screenshots if UI changes"
-        - "Breaking changes noted"
-      
-      checklist:
-        - "Tests pass"
-        - "Code reviewed"
-        - "Documentation updated"
-        - "No console errors"
+    checklist:
+      - "Tests pass"
+      - "Code reviewed"
+      - "Documentation updated"
+      - "No console errors"
+  
+  merge_strategy:
+    default: "squash and merge"
+    exceptions:
+      - "Feature branches: merge commit"
+      - "Release branches: merge commit"
     
-    merge_strategy:
-      default: "squash and merge"
-      exceptions:
-        - "Feature branches: merge commit"
-        - "Release branches: merge commit"
-      
-      rules:
-        - "Require PR approval"
-        - "Pass all CI checks"
-        - "Update from main before merge"
+    rules:
+      - "Require PR approval"
+      - "Pass all CI checks"
+      - "Update from main before merge"

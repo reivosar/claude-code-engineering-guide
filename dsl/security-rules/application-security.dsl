@@ -1,120 +1,117 @@
-claude_dsl:
-  version: "0.3"
-  
-  components:
-    application_type_security:
-      web_application:
-        critical:
-          - "Prohibit innerHTML usage (use DOM manipulation)"
-          - "Configure Content-Security-Policy"
-          - "Disable directory listing"
-          - "Prohibit access outside document root"
-          - "Set security headers (X-Frame-Options, X-XSS-Protection)"
-        high:
-          - "Implement CORS properly"
-          - "Force HTTPS in production"
-          - "Validate all form inputs"
-          - "Implement rate limiting"
-        medium:
-          - "Set secure cookie flags"
-          - "Implement CSRF protection"
-          - "Validate file uploads"
-      
-      cli_application:
-        critical:
-          - "Validate command line arguments"
-          - "Prevent command injection"
-          - "Secure file path handling"
-          - "Validate environment variables"
-        high:
-          - "Implement proper exit codes"
-          - "Secure temporary file usage"
-          - "Validate configuration files"
-        medium:
-          - "Implement logging for security events"
-          - "Handle signals properly"
-      
-      desktop_application:
-        critical:
-          - "Validate all file operations"
-          - "Prevent path traversal attacks"
-          - "Secure inter-process communication"
-          - "Validate user inputs in GUI"
-        high:
-          - "Implement secure update mechanisms"
-          - "Protect local data storage"
-          - "Validate external file formats"
-        medium:
-          - "Implement application signing"
-          - "Secure network communications"
-      
-      api_service:
-        critical:
-          - "Implement proper authentication"
-          - "Validate all API inputs"
-          - "Prevent SQL injection"
-          - "Rate limiting implementation"
-        high:
-          - "Implement proper CORS"
-          - "API versioning security"
-          - "Secure API documentation"
-          - "Input/output validation"
-        medium:
-          - "API monitoring and logging"
-          - "Implement API keys securely"
-      
-      library_package:
-        critical:
-          - "Validate all public API inputs"
-          - "Prevent code injection in dynamic features"
-          - "Secure dependency management"
-          - "Memory safety (if applicable)"
-        high:
-          - "Implement secure defaults"
-          - "Validate configuration options"
-          - "Thread safety considerations"
-        medium:
-          - "Document security assumptions"
-          - "Implement security testing"
-      
-      mobile_application:
-        critical:
-          - "Secure local data storage"
-          - "Validate all user inputs"
-          - "Secure network communications"
-          - "Protect against reverse engineering"
-        high:
-          - "Implement certificate pinning"
-          - "Secure biometric authentication"
-          - "Platform permission handling"
-        medium:
-          - "Application tampering detection"
-          - "Secure backup handling"
-      
-      microservice:
-        critical:
-          - "Secure service-to-service communication"
-          - "Implement proper authentication"
-          - "Validate all API inputs"
-          - "Network segmentation"
-        high:
-          - "Service mesh security"
-          - "Container security"
-          - "Secrets management"
-        medium:
-          - "Distributed tracing security"
-          - "Load balancer security"
-      
-      batch_processing:
-        critical:
-          - "Validate input data files"
-          - "Secure file processing"
-          - "Prevent injection in data processing"
-          - "Secure output file handling"
-        high:
-          - "Implement job authentication"
-          - "Secure data transformation"
-          - "Error handling in batch jobs"
-        medium:
-          - "Audit batch operations"
-          - "Monitor resource usage"
+components:
+  application_type_security:
+    web_application:
+      critical:
+        - "Prohibit innerHTML usage (use DOM manipulation)"
+        - "Configure Content-Security-Policy"
+        - "Disable directory listing"
+        - "Prohibit access outside document root"
+        - "Set security headers (X-Frame-Options, X-XSS-Protection)"
+      high:
+        - "Implement CORS properly"
+        - "Force HTTPS in production"
+        - "Validate all form inputs"
+        - "Implement rate limiting"
+      medium:
+        - "Set secure cookie flags"
+        - "Implement CSRF protection"
+        - "Validate file uploads"
+    
+    cli_application:
+      critical:
+        - "Validate command line arguments"
+        - "Prevent command injection"
+        - "Secure file path handling"
+        - "Validate environment variables"
+      high:
+        - "Implement proper exit codes"
+        - "Secure temporary file usage"
+        - "Validate configuration files"
+      medium:
+        - "Implement logging for security events"
+        - "Handle signals properly"
+    
+    desktop_application:
+      critical:
+        - "Validate all file operations"
+        - "Prevent path traversal attacks"
+        - "Secure inter-process communication"
+        - "Validate user inputs in GUI"
+      high:
+        - "Implement secure update mechanisms"
+        - "Protect local data storage"
+        - "Validate external file formats"
+      medium:
+        - "Implement application signing"
+        - "Secure network communications"
+    
+    api_service:
+      critical:
+        - "Implement proper authentication"
+        - "Validate all API inputs"
+        - "Prevent SQL injection"
+        - "Rate limiting implementation"
+      high:
+        - "Implement proper CORS"
+        - "API versioning security"
+        - "Secure API documentation"
+        - "Input/output validation"
+      medium:
+        - "API monitoring and logging"
+        - "Implement API keys securely"
+    
+    library_package:
+      critical:
+        - "Validate all public API inputs"
+        - "Prevent code injection in dynamic features"
+        - "Secure dependency management"
+        - "Memory safety (if applicable)"
+      high:
+        - "Implement secure defaults"
+        - "Validate configuration options"
+        - "Thread safety considerations"
+      medium:
+        - "Document security assumptions"
+        - "Implement security testing"
+    
+    mobile_application:
+      critical:
+        - "Secure local data storage"
+        - "Validate all user inputs"
+        - "Secure network communications"
+        - "Protect against reverse engineering"
+      high:
+        - "Implement certificate pinning"
+        - "Secure biometric authentication"
+        - "Platform permission handling"
+      medium:
+        - "Application tampering detection"
+        - "Secure backup handling"
+    
+    microservice:
+      critical:
+        - "Secure service-to-service communication"
+        - "Implement proper authentication"
+        - "Validate all API inputs"
+        - "Network segmentation"
+      high:
+        - "Service mesh security"
+        - "Container security"
+        - "Secrets management"
+      medium:
+        - "Distributed tracing security"
+        - "Load balancer security"
+    
+    batch_processing:
+      critical:
+        - "Validate input data files"
+        - "Secure file processing"
+        - "Prevent injection in data processing"
+        - "Secure output file handling"
+      high:
+        - "Implement job authentication"
+        - "Secure data transformation"
+        - "Error handling in batch jobs"
+      medium:
+        - "Audit batch operations"
+        - "Monitor resource usage"

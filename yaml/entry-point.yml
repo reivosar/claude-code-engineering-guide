@@ -49,6 +49,20 @@ rules:
         - components.validation_principles
 
 flow:
+  # LOAD ALL DEPENDENCIES FIRST
+  - action: load_all_yml_files
+    files:
+      - "development.yml"
+      - "behavior-rules/index.yml"
+      - "coding-rules/index.yml"
+      - "design-rules/index.yml"
+      - "security-rules/index.yml"
+      - "validation-rules/index.yml"
+      - "git-rules/index.yml"
+      - "app-types.yml"
+      - "risk-assessment.yml"
+      - "checklist.yml"
+  
   - action: assign_role
     with:
       role: "super_engineer"
@@ -77,8 +91,6 @@ flow:
   
   - if: task_type == "development"
     then:
-      - action: load_dsl
-        target: "development.yml"
       - action: develop
   
   - action: present_checklist
