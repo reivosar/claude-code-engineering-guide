@@ -14,50 +14,45 @@ This repository provides the same engineering guide in three different formats:
 
 ### [DSL Version](dsl/)  
 - **Claude DSL v0.3 format**
-- Up to 84.6% token reduction
+- 37.4% token reduction vs Markdown
+- Most efficient syntax
 - Structured definitions
-- Conditional logic and flow control
 
 ### [YAML Version](yaml/)
 - **Standard YAML format**
+- 27.8% token reduction vs Markdown
 - Clean, structured syntax
-- Better token efficiency than DSL
 - Industry-standard format
 
 ## Which Should You Choose?
 
 | Use Case | Recommended | Reason |
 |----------|-------------|--------|
-| Mostly simple tasks | Markdown | Minimal token usage |
-| Development tasks (structured) | YAML | Clean syntax, efficient |
-| Development tasks (advanced) | DSL | Conditional logic, flow control |
-| Claude Code beginners | Markdown | Simple setup |
-| Industry standard preference | YAML | Standard format, wide support |
+| Maximum token efficiency | DSL | 37.4% token reduction |
+| Industry standard preference | YAML | Standard format, 27.8% reduction |
+| Simple setup & readability | Markdown | Natural language, baseline |
+| Claude Code beginners | Markdown | Easiest to understand |
+| Structured config preference | YAML | Clean syntax, wide support |
 
 ## Performance Comparison
 
 ### File Count & Lines
 | Format | File Count | Total Lines | Change |
 |--------|------------|-------------|--------|
-| Markdown | 9 files | 591 lines | Baseline |
-| DSL | 30 files | 1,489 lines | **Modular structure** |
-| YAML | 30 files | ~1,200 lines | **Efficient modular** |
+| Markdown | 10 files | 1,264 lines | Baseline |
+| DSL | 30 files | 1,573 lines | **Modular structure** |
+| YAML | 30 files | 1,473 lines | **Efficient modular** |
 
 ### Token Usage
 
-#### Non-Development Tasks
+#### All Tasks (Full Framework Load)
 | Format | Token Count | Change |
 |--------|-------------|--------|
-| Markdown | ~748 tokens | Baseline |
-| DSL | ~674 tokens | **9.9% reduction** |
-| YAML | ~650 tokens | **13.1% reduction** |
+| Markdown | ~7,041 tokens | Baseline |
+| YAML | ~5,084 tokens | **27.8% reduction** |
+| DSL | ~4,404 tokens | **37.4% reduction** |
 
-#### Development Tasks
-| Format | Token Count | Change |
-|--------|-------------|--------|
-| Markdown | ~8,902 tokens | Baseline |
-| DSL | ~2,836 tokens | **68.1% reduction** |
-| YAML | ~2,998 tokens | **66.3% reduction** |
+**Note**: All versions load their complete frameworks. DSL achieves best efficiency through syntax optimization.
 
 ### Key Differences
 
@@ -70,7 +65,7 @@ This repository provides the same engineering guide in three different formats:
 | **Extensibility** | Markdown editing | DSL structure editing | YAML structure editing |
 | **Conditional Logic** | Human judgment dependent | DSL automated processing | Standard YAML processing |
 | **Variables** | ❌ Not supported | ✅ Supported (risk levels, etc.) | ✅ Supported (standard format) |
-| **Token Efficiency** | Standard | Improved for development tasks | **Best for development tasks** |
+| **Token Efficiency** | Baseline (7,041 tokens) | **Best (4,404 tokens)** | Good (5,084 tokens) |
 | **Industry Standard** | ❌ Documentation format | ❌ Custom format | ✅ Widely supported |
 
 ## Quick Start

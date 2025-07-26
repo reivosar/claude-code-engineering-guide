@@ -94,25 +94,36 @@ Git workflow and operations:
 ### 1. Conditional Loading
 ```yaml
 action: load_on_demand
-condition: "requires_code_quality"
-files:
-  - "coding-rules/index.dsl"
+condition: requires_code_quality
+files: [
+  coding-rules/index.dsl
+]
 ```
 
 ### 2. Variable System
 ```yaml
 variables:
-  design_system: "Digital Agency Design System"
+  design_system: Digital Agency Design System
   validation_passed: false
 ```
 
-### 3. Cross-References
+### 3. Standardized Array Format
+All arrays now use consistent multi-line formatting:
+```yaml
+items: [
+  first_item,
+  second_item,
+  third_item
+]
+```
+
+### 4. Cross-References
 Modules reference each other to eliminate duplication:
 - Security rules reference logging standards from coding-rules
 - Design rules reference monitoring from coding-rules
 - All modules use unified validation variables
 
-### 4. Hierarchical Index System
+### 5. Hierarchical Index System
 Each category has an `index.dsl` that loads related files, enabling:
 - Selective loading based on task requirements
 - Clear dependency management
@@ -120,43 +131,46 @@ Each category has an `index.dsl` that loads related files, enabling:
 
 ## Token Efficiency
 
-### Current Statistics
+### Current Statistics (After Array Formatting)
 | Metric | Count |
 |--------|-------|
 | **Total Files** | 30 DSL files |
-| **Total Lines** | 1,489 lines |
-| **Estimated Tokens** | ~1,800-2,400 tokens (full load) |
+| **Total Lines** | 1,573 lines |
+| **Token Usage** | ~4,404 tokens (always full load) |
 
-### Loading Strategies
-| Strategy | Files Loaded | Estimated Tokens | Use Case |
-|----------|--------------|------------------|----------|
-| **Minimal** | entry-point.dsl only | ~400 tokens | Simple tasks |
-| **Conditional** | Based on task type | ~800-1,200 tokens | Development tasks |
-| **Full Load** | All modules | ~2,400 tokens | Complex projects |
+### Loading Architecture
+**Important**: DSL version always loads all files through entry-point.dsl. There is no conditional loading despite development.dsl containing conditional logic (which is never executed independently).
 
-### Compared to Markdown Version
-- **Markdown**: 9 files, 591 lines, ~740 tokens (always loaded)
-- **DSL**: 30 files, 1,489 lines, **conditional loading** (400-2,400 tokens)
+| Loading Method | Files Loaded | Token Count | Use Case |
+|----------------|--------------|-------------|----------|
+| **Standard** | All 30 files via entry-point.dsl | ~4,404 tokens | All tasks |
+
+**Note**: The conditional loading mechanisms in development.dsl are unused because entry-point.dsl loads all files upfront.
+
+### Recent Improvements
+- **Array Formatting**: Standardized all arrays to multi-line format for better readability
+- **YAML Conversion**: Converted YAML lists to consistent array format
+- **Quote Removal**: Eliminated unnecessary quotes from array elements
+- **Syntax Optimization**: DSL syntax provides better token efficiency than YAML
+
+### Version Comparison (All Full Load)
+| Version | Files | Lines | Tokens | Token Efficiency |
+|---------|-------|-------|--------|------------------|
+| **Markdown** | 10 files | 1,264 lines | ~7,041 tokens | Baseline |
+| **YAML** | 30 files | 1,473 lines | ~5,084 tokens | 27.8% reduction |
+| **DSL** | 30 files | 1,573 lines | ~4,404 tokens | **37.4% reduction** |
+
+**Key Insight**: DSL achieves best token efficiency through syntax optimization, not conditional loading.
 
 ## Usage Patterns
 
-### For Simple Tasks
+### For All Tasks
 ```
 Follow entry-point.dsl for complete DSL execution.
 ```
-→ Loads only core files (~400 tokens)
+→ Always loads all 30 files (~4,404 tokens)
 
-### For Development Projects
-```
-Follow entry-point.dsl for complete DSL execution.
-```
-→ Conditionally loads relevant modules (~800-1,200 tokens)
-
-### For Complex Security Projects
-```
-Follow entry-point.dsl for complete DSL execution.
-```
-→ Loads all security and validation modules (~1,800 tokens)
+**Note**: Regardless of task complexity, the DSL version loads the complete framework. The benefit is comprehensive coverage with optimized syntax efficiency.
 
 ## Benefits of Modular Architecture
 
@@ -165,10 +179,10 @@ Follow entry-point.dsl for complete DSL execution.
 - Easy to update specific rule categories
 - Consistent cross-references prevent duplication
 
-### 2. **Performance**
-- Load only what's needed for the task
-- Reduced token usage for simple tasks
-- Conditional loading based on requirements
+### 2. **Syntax Efficiency**
+- DSL syntax more concise than YAML/JSON
+- Reduced token count through optimized language constructs
+- Better token density per line of configuration
 
 ### 3. **Extensibility**
 - Add new rule categories easily
@@ -208,9 +222,10 @@ Modify `development.dsl` to customize which modules load for specific task types
 
 ```yaml
 action: load_on_demand
-condition: "custom_condition"
-files:
-  - "custom-rules/index.dsl"
+condition: custom_condition
+files: [
+  custom-rules/index.dsl
+]
 ```
 
 ### Variable Customization
