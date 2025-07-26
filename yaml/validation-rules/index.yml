@@ -1,0 +1,8 @@
+version: "0.3"
+
+flow:
+    - action: load_external
+      files:
+        - "validation-rules/correctness-verification.yml"
+        - "validation-rules/verification-process.yml"
+        - "validation-rules/validation-enforcement.yml"

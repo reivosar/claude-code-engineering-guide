@@ -1,0 +1,11 @@
+version: "0.3"
+
+flow:
+    - action: load_external
+      files:
+        - "behavior-rules/communication-behavior.yml"
+        - "behavior-rules/work-process-behavior.yml"
+        - "behavior-rules/task-classification-behavior.yml"
+        - "behavior-rules/failure-recovery-behavior.yml"
+        - "behavior-rules/unexpected-situation-behavior.yml"
+        - "behavior-rules/debugging-analysis-behavior.yml"

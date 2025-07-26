@@ -1,0 +1,9 @@
+version: "0.3"
+
+flow:
+    - action: load_external
+      files:
+        - "security-rules/universal-security.yml"
+        - "security-rules/application-security.yml"
+        - "security-rules/architecture-security.yml"
+        - "security-rules/security-validation.yml"
