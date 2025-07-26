@@ -1,6 +1,7 @@
 flow:
   - action: load_external
-    files:
-      - "coding-rules/code-style.dsl"
-      - "coding-rules/testing-strategy.dsl"
-      - "coding-rules/monitoring-logging.dsl"
+    files: [
+      coding-rules/code-style.dsl,
+      coding-rules/testing-strategy.dsl,
+      coding-rules/monitoring-logging.dsl
+    ]

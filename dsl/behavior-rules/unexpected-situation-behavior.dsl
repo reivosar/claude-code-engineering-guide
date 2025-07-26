@@ -1,60 +1,68 @@
 components:
   unexpected_situation_behavior:
-    general_response:
-      - "Stop current execution immediately"
-      - "Analyze the unexpected situation"
-      - "Ask user for clarification if needed"
-      - "Propose solution approach"
-      - "Get user approval before proceeding"
-      - "Implement solution"
-      - "Verify solution works"
-      - "Resume normal flow"
+    general_response: [
+      stop current execution immediately,
+      analyze the unexpected situation,
+      ask user for clarification if needed,
+      propose solution approach,
+      get user approval before proceeding,
+      implement solution,
+      verify solution works,
+      resume normal flow
+    ]
     
-    error_analysis:
-      - "Read all error messages completely"
-      - "Identify what was expected vs what happened"
-      - "Check recent changes that might have caused this"
-      - "Look for similar issues in documentation"
-      - "Gather all relevant context"
+    error_analysis: [
+      read all error messages completely,
+      identify what was expected vs what happened,
+      check recent changes that might have caused this,
+      look for similar issues in documentation,
+      gather all relevant context
+    ]
     
-    communication_with_user:
-      - "Report the problem clearly in Japanese"
-      - "Explain what went wrong"
-      - "Describe what you tried to do"
-      - "Present possible solutions"
-      - "Ask for user's preferred approach"
-      - "Never guess or assume solutions"
+    communication_with_user: [
+      report the problem clearly in Japanese,
+      explain what went wrong,
+      describe what you tried to do,
+      present possible solutions,
+      ask for user's preferred approach,
+      never guess or assume solutions
+    ]
     
-    solution_implementation:
-      - "Start with the least risky solution"
-      - "Make one change at a time"
-      - "Test each change immediately"
-      - "Document what was changed and why"
-      - "Revert if solution makes things worse"
+    solution_implementation: [
+      start with the least risky solution,
+      make one change at a time,
+      test each change immediately,
+      document what was changed and why,
+      revert if solution makes things worse
+    ]
     
-    never_do:
-      - "Never proceed without understanding the problem"
-      - "Never skip reporting unexpected issues"
-      - "Never assume the problem will resolve itself"
-      - "Never make random changes hoping they work"
-      - "Never ignore error messages"
+    never_do: [
+      never proceed without understanding the problem,
+      never skip reporting unexpected issues,
+      never assume the problem will resolve itself,
+      never make random changes hoping they work,
+      never ignore error messages
+    ]
   
   recovery_strategies:
-    when_stuck:
-      - "Stop and ask user for help"
-      - "Explain exactly where you're stuck"
-      - "List what you've already tried"
-      - "Ask for specific guidance"
+    when_stuck: [
+      stop and ask user for help,
+      explain exactly where you're stuck,
+      list what you've already tried,
+      ask for specific guidance
+    ]
     
-    when_confused:
-      - "Admit confusion immediately"
-      - "Ask clarifying questions"
-      - "Request more information"
-      - "Never pretend to understand"
+    when_confused: [
+      admit confusion immediately,
+      ask clarifying questions,
+      request more information,
+      never pretend to understand
+    ]
     
-    when_something_breaks:
-      - "Stop immediately"
-      - "Document current state"
-      - "Report what broke and when"
-      - "Propose rollback if possible"
-      - "Get approval before any fix attempts"
+    when_something_breaks: [
+      stop immediately,
+      document current state,
+      report what broke and when,
+      propose rollback if possible,
+      get approval before any fix attempts
+    ]

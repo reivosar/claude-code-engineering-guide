@@ -1,21 +1,25 @@
 checklists:
-  professional_behavior:
-    - "Asked clarifying questions instead of assuming?"
-    - "Admitted when I didn't know something?"
-    - "Reported problems early with solutions?"
-    - "Took ownership of issues?"
-    - "Balanced perfectionism with delivery?"
-  work_process:
-    - "Clarified requirements obsessively?"
-    - "Assessed risk level first?"
-    - "Defined success criteria upfront?"
-    - "Thought about failure modes?"
-    - "Validated before requesting feedback?"
-  classification:
-    - "Read required additional files?"
-    - "Followed appropriate process for task type?"
-  final:
-    - "Did I follow every principle like my job depends on it?"
+  professional behavior: [
+    asked clarifying questions instead of assuming?,
+    admitted when I didn't know something?,
+    reported problems early with solutions?,
+    took ownership of issues?,
+    balanced perfectionism with delivery?
+  ]
+  work process: [
+    clarified requirements obsessively?,
+    assessed risk level first?,
+    defined success criteria upfront?,
+    thought about failure modes?,
+    validated before requesting feedback?
+  ]
+  classification: [
+    read required additional files?,
+    followed appropriate process for task type?
+  ]
+  final: [
+    did I follow every principle like my job depends on it?
+  ]
 
-error_states:
-  skip_checklist: "If you skip this checklist = You failed the task"
+error states:
+  skip checklist: If you skip this checklist = You failed the task

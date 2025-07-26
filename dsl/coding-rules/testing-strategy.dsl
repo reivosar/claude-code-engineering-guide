@@ -15,29 +15,33 @@ variables:
 components:
   test_pyramid:
     unit_tests:
-      proportion: "70%"
-      characteristics:
-        - "Fast execution"
-        - "Isolated components"
-        - "Mock external dependencies"
-      requirements:
-        - "Test edge cases"
-        - "Test error conditions"
-        - "Test happy path"
+      proportion: 70%
+      characteristics: [
+        fast execution,
+        isolated components,
+        mock external dependencies
+      ]
+      requirements: [
+        test edge cases,
+        test error conditions,
+        test happy path
+      ]
     
     integration_tests:
-      proportion: "20%"
-      characteristics:
-        - "Test component interactions"
-        - "Use real dependencies when possible"
-        - "Verify data flow"
+      proportion: 20%
+      characteristics: [
+        test component interactions,
+        use real dependencies when possible,
+        verify data flow
+      ]
     
     e2e_tests:
-      proportion: "10%"
-      characteristics:
-        - "Test critical user journeys"
-        - "Verify end-to-end functionality"
-        - "Run in production-like environment"
+      proportion: 10%
+      characteristics: [
+        test critical user journeys,
+        verify end-to-end functionality,
+        run in production-like environment
+      ]
   
   coverage_requirements:
     by_risk_level:
@@ -45,20 +49,23 @@ components:
       R1: "${variables.coverage_targets.R1}"
       R2: "${variables.coverage_targets.R2}"
     
-    enforcement:
-      - "Coverage must meet targets before merge"
-      - "New code must not decrease coverage"
-      - "Mutation testing for critical paths"
+    enforcement: [
+      coverage must meet targets before merge,
+      new code must not decrease coverage,
+      mutation testing for critical paths
+    ]
   
   test_quality:
-    principles:
-      - "Tests should be deterministic"
-      - "Tests should be independent"
-      - "Tests should be readable"
-      - "Tests should be maintainable"
+    principles: [
+      tests should be deterministic,
+      tests should be independent,
+      tests should be readable,
+      tests should be maintainable
+    ]
     
-    anti_patterns:
-      - "Avoid testing implementation details"
-      - "Avoid brittle selectors"
-      - "Avoid shared test state"
-      - "Avoid slow tests without reason"
+    anti_patterns: [
+      avoid testing implementation details,
+      avoid brittle selectors,
+      avoid shared test state,
+      avoid slow tests without reason
+    ]

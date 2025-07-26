@@ -1,42 +1,46 @@
 variables:
   branch_prefixes:
-    feature: "feature/"
-    bugfix: "bugfix/"
-    hotfix: "hotfix/"
-    release: "release/"
-    chore: "chore/"
+    feature: feature/
+    bugfix: bugfix/
+    hotfix: hotfix/
+    release: release/
+    chore: chore/
   
-  commit_types:
-    - "feat: new feature"
-    - "fix: bug fix"
-    - "docs: documentation"
-    - "style: formatting"
-    - "refactor: code restructuring"
-    - "test: test updates"
-    - "chore: maintenance"
+  commit_types: [
+    feat: new feature,
+    fix: bug fix,
+    docs: documentation,
+    style: formatting,
+    refactor: code restructuring,
+    test: test updates,
+    chore: maintenance
+  ]
 
 components:
   branch_strategy:
     naming: "${variables.branch_prefixes}"
-    rules:
-      - "Branch from main/master"
-      - "Use descriptive names"
-      - "Include ticket number if applicable"
-      - "Keep branches short-lived"
+    rules: [
+      branch from main/master,
+      use descriptive names,
+      include ticket number if applicable,
+      keep branches short-lived
+    ]
     
-    examples:
-      - "feature/add-user-authentication"
-      - "bugfix/fix-login-redirect"
-      - "hotfix/patch-security-vulnerability"
+    examples: [
+      feature/add-user-authentication,
+      bugfix/fix-login-redirect,
+      hotfix/patch-security-vulnerability
+    ]
   
   commit_standards:
-    format: "<type>(<scope>): <subject>"
+    format: <type>(<scope>): <subject>
     types: "${variables.commit_types}"
-    rules:
-      - "Use imperative mood"
-      - "Keep subject line under 72 chars"
-      - "Explain WHY in body if needed"
-      - "Reference issues/tickets"
+    rules: [
+      use imperative mood,
+      keep subject line under 72 chars,
+      explain WHY in body if needed,
+      reference issues/tickets
+    ]
     
     body_format: |
       <subject>
@@ -46,25 +50,29 @@ components:
       Closes #<issue>
   
   pr_requirements:
-    description:
-      - "Summary of changes"
-      - "Testing approach"
-      - "Screenshots if UI changes"
-      - "Breaking changes noted"
+    description: [
+      summary of changes,
+      testing approach,
+      screenshots if UI changes,
+      breaking changes noted
+    ]
     
-    checklist:
-      - "Tests pass"
-      - "Code reviewed"
-      - "Documentation updated"
-      - "No console errors"
+    checklist: [
+      tests pass,
+      code reviewed,
+      documentation updated,
+      no console errors
+    ]
   
   merge_strategy:
-    default: "squash and merge"
-    exceptions:
-      - "Feature branches: merge commit"
-      - "Release branches: merge commit"
+    default: squash and merge
+    exceptions: [
+      feature branches: merge commit,
+      release branches: merge commit
+    ]
     
-    rules:
-      - "Require PR approval"
-      - "Pass all CI checks"
-      - "Update from main before merge"
+    rules: [
+      require PR approval,
+      pass all CI checks,
+      update from main before merge
+    ]

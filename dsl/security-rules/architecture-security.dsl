@@ -1,28 +1,32 @@
 components:
   architecture_security:
-    monolithic:
-      - "Internal component isolation"
-      - "Database connection security"
-      - "Session management"
-      - "Single point of failure mitigation"
+    monolithic: [
+      internal component isolation,
+      database connection security,
+      session management,
+      single point of failure mitigation
+    ]
     
-    microservices:
-      - "Service mesh security"
-      - "Inter-service authentication"
-      - "API gateway security"
-      - "Service discovery security"
-      - "Container security"
+    microservices: [
+      service mesh security,
+      inter-service authentication,
+      API gateway security,
+      service discovery security,
+      container security
+    ]
     
-    serverless:
-      - "Function isolation"
-      - "Event source validation"
-      - "Cold start security"
-      - "Resource limit enforcement"
-      - "Vendor lock-in considerations"
+    serverless: [
+      function isolation,
+      event source validation,
+      cold start security,
+      resource limit enforcement,
+      vendor lock-in considerations
+    ]
     
-    event_driven:
-      - "Event validation"
-      - "Message queue security"
-      - "Event ordering integrity"
-      - "Publisher/subscriber authentication"
-      - "Event replay protection"
+    event_driven: [
+      event validation,
+      message queue security,
+      event ordering integrity,
+      publisher/subscriber authentication,
+      event replay protection
+    ]

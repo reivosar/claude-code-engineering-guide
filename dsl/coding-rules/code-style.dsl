@@ -16,16 +16,18 @@ variables:
 
 components:
   readability_rules:
-    principle: "Readability > Cleverness"
-    naming:
-      - "Use descriptive names"
-      - "Avoid abbreviations"
-      - "Use consistent naming conventions"
+    principle: Readability > Cleverness
+    naming: [
+      use descriptive names,
+      avoid abbreviations,
+      use consistent naming conventions
+    ]
     
-    comments:
-      - "Document WHY, not WHAT"
-      - "Keep comments up-to-date"
-      - "Remove commented-out code"
+    comments: [
+      document WHY not WHAT,
+      keep comments up-to-date,
+      remove commented-out code
+    ]
   
   complexity_rules:
     cyclomatic: "≤${variables.complexity_limits.cyclomatic}"
@@ -35,21 +37,23 @@ components:
   function_rules:
     size: "≤${variables.function_limits.lines} lines"
     parameters: "≤${variables.function_limits.parameters}"
-    responsibility: "Single responsibility principle"
-    side_effects: "Minimize side effects"
+    responsibility: Single responsibility principle
+    side_effects: Minimize side effects
   
   file_organization:
-    structure:
-      - "Imports at top"
-      - "Constants after imports"
-      - "Types/Interfaces next"
-      - "Main logic follows"
-      - "Exports at bottom"
+    structure: [
+      imports at top,
+      constants after imports,
+      types/interfaces next,
+      main logic follows,
+      exports at bottom
+    ]
     
     size: "≤${variables.file_limits.lines} lines per file"
   
-  error_handling:
-    - "Always handle errors explicitly"
-    - "Use specific error types"
-    - "Provide meaningful error messages"
-    - "Log errors appropriately (see coding-rules/monitoring-logging.dsl for log levels)"
+  error_handling: [
+    Always handle errors explicitly,
+    Use specific error types,
+    Provide meaningful error messages,
+    Log errors appropriately (see coding-rules/monitoring-logging.dsl for log levels)
+  ]

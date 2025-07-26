@@ -1,48 +1,55 @@
 components:
   test_failure_behavior:
-    on_test_failure:
-      - "Analyze failure reason"
-      - "Fix the underlying issue"
-      - "Re-run the failed test"
-      - "Repeat until all tests pass"
-      - "Never skip failing tests"
+    on_test_failure: [
+      analyze failure reason,
+      fix the underlying issue,
+      re-run the failed test,
+      repeat until all tests pass,
+      never skip failing tests
+    ]
     
-    failure_analysis:
-      - "Read error messages carefully"
-      - "Identify root cause, not symptoms"
-      - "Check recent changes that might cause failure"
-      - "Verify environment and dependencies"
+    failure_analysis: [
+      read error messages carefully,
+      identify root cause not symptoms,
+      check recent changes that might cause failure,
+      verify environment and dependencies
+    ]
     
-    fix_strategy:
-      - "Make minimal changes to fix the issue"
-      - "Test the fix in isolation if possible"
-      - "Ensure fix doesn't break other functionality"
-      - "Document what was fixed and why"
+    fix_strategy: [
+      make minimal changes to fix the issue,
+      test the fix in isolation if possible,
+      ensure fix doesn't break other functionality,
+      document what was fixed and why
+    ]
   
   validation_failure_behavior:
-    on_validation_failure:
-      - "Stop current execution immediately"
-      - "Report specific failure details"
-      - "Implement required fixes"
-      - "Re-run validation from the beginning"
-      - "Continue only when validation_passed = true"
+    on_validation_failure: [
+      stop current execution immediately,
+      report specific failure details,
+      implement required fixes,
+      re-run validation from the beginning,
+      continue only when validation_passed = true
+    ]
     
-    retry_policy:
-      - "Fix and retry until success"
-      - "No limit on retry attempts"
-      - "Each retry must address the failure cause"
-      - "Never proceed with failing validations"
+    retry_policy: [
+      fix and retry until success,
+      no limit on retry attempts,
+      each retry must address the failure cause,
+      never proceed with failing validations
+    ]
   
   build_failure_behavior:
-    on_build_failure:
-      - "Read compilation errors line by line"
-      - "Fix syntax and import errors"
-      - "Resolve dependency issues"
-      - "Re-run build process"
-      - "Repeat until build succeeds"
+    on_build_failure: [
+      read compilation errors line by line,
+      fix syntax and import errors,
+      resolve dependency issues,
+      re-run build process,
+      repeat until build succeeds
+    ]
     
-    common_fixes:
-      - "Check for missing imports"
-      - "Verify function signatures"
-      - "Fix syntax errors"
-      - "Resolve type mismatches"
+    common_fixes: [
+      check for missing imports,
+      verify function signatures,
+      fix syntax errors,
+      resolve type mismatches
+    ]

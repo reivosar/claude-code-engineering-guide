@@ -1,32 +1,37 @@
 universal_security_requirements:
   critical:
-    input_validation:
-      - "Validate all external inputs"
-      - "Implement proper data type checking"
-      - "Handle null/undefined values safely"
-      - "Prevent injection attacks through input sanitization"
+    input_validation: [
+      validate all external inputs,
+      implement proper data type checking,
+      handle null/undefined values safely,
+      prevent injection attacks through input sanitization
+    ]
     
-    error_handling:
-      - "Never expose sensitive information in error messages"
-      - "Log security events appropriately (see coding-rules/monitoring-logging.dsl for log levels)"
-      - "Fail securely (default deny)"
-      - "Implement proper exception handling"
+    error_handling: [
+      never expose sensitive information in error messages,
+      log security events appropriately (see coding-rules/monitoring-logging.dsl for log levels),
+      fail securely (default deny),
+      implement proper exception handling
+    ]
     
-    authentication_authorization:
-      - "Implement proper authentication (if applicable)"
-      - "Enforce authorization checks"
-      - "Secure credential storage"
-      - "Session management security"
+    authentication_authorization: [
+      implement proper authentication (if applicable),
+      enforce authorization checks,
+      secure credential storage,
+      session management security
+    ]
   
   high:
-    data_protection:
-      - "Encrypt sensitive data at rest"
-      - "Secure data transmission"
-      - "Implement proper key management"
-      - "Follow data privacy regulations"
+    data_protection: [
+      encrypt sensitive data at rest,
+      secure data transmission,
+      implement proper key management,
+      follow data privacy regulations
+    ]
     
-    logging_monitoring:
-      - "Log security-relevant events (see coding-rules/monitoring-logging.dsl for standards)"
-      - "Protect log integrity"
-      - "Monitor for security incidents"
-      - "Implement audit trails"
+    logging_monitoring: [
+      log security-relevant events (see coding-rules/monitoring-logging.dsl for standards),
+      protect log integrity,
+      monitor for security incidents,
+      implement audit trails
+    ]

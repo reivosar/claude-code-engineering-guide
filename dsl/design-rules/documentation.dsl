@@ -1,36 +1,40 @@
 variables:
-  doc_types:
-    - "API documentation"
-    - "Code comments"
-    - "README files"
-    - "Architecture docs"
-    - "User guides"
-    - "Deployment docs"
+  doc_types: [
+    API documentation,
+    code comments,
+    README files,
+    architecture docs,
+    user guides,
+    deployment docs
+  ]
   
   required_sections:
-    readme:
-      - "Project description"
-      - "Installation"
-      - "Usage"
-      - "Configuration"
-      - "Contributing"
-      - "License"
+    readme: [
+      project description,
+      installation,
+      usage,
+      configuration,
+      contributing,
+      license
+    ]
     
-    api:
-      - "Endpoint description"
-      - "Parameters"
-      - "Response format"
-      - "Error codes"
-      - "Examples"
+    api: [
+      endpoint description,
+      parameters,
+      response format,
+      error codes,
+      examples
+    ]
 
 components:
   code_documentation:
     functions:
-      required:
-        - "Purpose description"
-        - "Parameter descriptions"
-        - "Return value description"
-        - "Throws/Errors documented"
+      required: [
+        purpose description,
+        parameter descriptions,
+        return value description,
+        throws/errors documented
+      ]
       
       format: |
         /**
@@ -42,47 +46,53 @@ components:
          */
     
     classes:
-      required:
-        - "Class purpose"
-        - "Usage examples"
-        - "Public API documentation"
-        - "Important notes"
+      required: [
+        class purpose,
+        usage examples,
+        public API documentation,
+        important notes
+      ]
   
   api_documentation:
-    openapi: "3.0.0"
+    openapi: 3.0.0
     required_fields: "${variables.required_sections.api}"
     
-    examples:
-      - "Success response example"
-      - "Error response example"
-      - "Request example"
-      - "cURL command"
+    examples: [
+      success response example,
+      error response example,
+      request example,
+      cURL command
+    ]
   
   readme_standards:
     sections: "${variables.required_sections.readme}"
     
-    badges:
-      - "Build status"
-      - "Test coverage"
-      - "Version"
-      - "License"
+    badges: [
+      build status,
+      test coverage,
+      version,
+      license
+    ]
     
-    formatting:
-      - "Use consistent heading levels"
-      - "Include code examples"
-      - "Add screenshots where helpful"
-      - "Keep it concise"
+    formatting: [
+      use consistent heading levels,
+      include code examples,
+      add screenshots where helpful,
+      keep it concise
+    ]
   
   architecture_docs:
-    required:
-      - "System overview diagram"
-      - "Component descriptions"
-      - "Data flow"
-      - "Technology choices"
-      - "Decision rationale"
+    required: [
+      system overview diagram,
+      component descriptions,
+      data flow,
+      technology choices,
+      decision rationale
+    ]
     
-    diagrams:
-      - "Use standard notation"
-      - "Keep diagrams simple"
-      - "Version control diagrams"
-      - "Update with code changes"
+    diagrams: [
+      use standard notation,
+      keep diagrams simple,
+      version control diagrams,
+      update with code changes
+    ]

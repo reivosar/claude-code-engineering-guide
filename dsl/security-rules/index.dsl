@@ -1,7 +1,8 @@
 flow:
   - action: load_external
-    files:
-      - "security-rules/universal-security.dsl"
-      - "security-rules/application-security.dsl"
-      - "security-rules/architecture-security.dsl"
-      - "security-rules/security-validation.dsl"
+    files: [
+      security-rules/universal-security.dsl,
+      security-rules/application-security.dsl,
+      security-rules/architecture-security.dsl,
+      security-rules/security-validation.dsl
+    ]
