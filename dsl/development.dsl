@@ -1,5 +1,6 @@
 variables:
   validation_order: [
+    create_comprehensive_test_suite,
     run_unit_tests_if_available,
     verify_startup_success,
     test_end_to_end_user_experience,
@@ -27,6 +28,7 @@ variables:
 components:
   validation_principles:
     critical: Server startup logs ≠ Working application
+    test_creation_mandatory: "CLAUDE MUST automatically create test code for EVERY developed application WITHOUT being asked"
   
   validation_execution:
     rules: "${variables.validation_order}"
@@ -63,6 +65,7 @@ components:
   
   development_checklist: [
     All validation requirements executed?,
+    Test code automatically created for application?,
     Actual functionality tested?,
     UI follows Design System?,
     Security requirements verified (security-rules/)?,
