@@ -48,16 +48,16 @@ This repository provides the same engineering guide in three different formats:
 #### Non-Development Tasks
 | Format | Token Count | Change |
 |--------|-------------|--------|
-| Markdown | ~484 tokens | Baseline |
-| DSL | ~160 tokens | **67% reduction** |
-| YAML | ~140 tokens | **71% reduction** |
+| Markdown | ~748 tokens | Baseline |
+| DSL | ~674 tokens | **9.9% reduction** |
+| YAML | ~650 tokens | **13.1% reduction** |
 
 #### Development Tasks
 | Format | Token Count | Change |
 |--------|-------------|--------|
-| Markdown | ~5,518 tokens | Baseline |
-| DSL | ~510 tokens | **90.8% reduction** |
-| YAML | ~420 tokens | **92.4% reduction** |
+| Markdown | ~8,902 tokens | Baseline |
+| DSL | ~2,836 tokens | **68.1% reduction** |
+| YAML | ~2,998 tokens | **66.3% reduction** |
 
 ### Key Differences
 
