@@ -1,0 +1,29 @@
+{
+  "name": "claude-dsl",
+  "version": "1.0.0",
+  "description": "MCP server for Claude DSL rules",
+  "main": "mcp-handler.js",
+  "type": "module",
+  "bin": {
+    "claude-dsl": "./cli.js"
+  },
+  "scripts": {
+    "start": "node mcp-handler.js",
+    "dev": "node --watch mcp-handler.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "glob": "^10.3.10",
+    "js-yaml": "^4.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/claude-code-engineering-guide.git"
+  },
+  "keywords": ["mcp", "claude", "dsl", "ai", "development"],
+  "author": "Your Name",
+  "license": "MIT"
+}

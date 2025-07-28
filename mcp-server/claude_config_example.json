@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "dsl-rules": {
+      "command": "claude-dsl",
+      "cwd": "/path/to/claude-code-engineering-guide",
+      "args": ["./dsl"]
+    }
+  }
+}

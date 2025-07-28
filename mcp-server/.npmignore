@@ -1,0 +1,6 @@
+claude_config_example.json
+.git
+.gitignore
+node_modules
+*.log
+.DS_Store

@@ -1,88 +1,162 @@
-# Claude Code Engineering Guide
+# Claude Code Engineering Guide - DSL Version
 
-Streamlined engineering framework optimized for token efficiency and pragmatic excellence.
+Modular engineering framework in Claude DSL v0.3 format with MCP server support for Claude Desktop.
 
-## Three Versions Available
+## Quick Setup
 
-This repository provides the same engineering guide in three different formats:
-
-### [Markdown Version](markdown/)
-- **Traditional Markdown format**
-- Works directly with Claude Code
-- Natural language readability
-- Load only what you need
-
-### [DSL Version](dsl/)  
-- **Claude DSL v0.3 format**
-- 37.4% token reduction vs Markdown
-- Most efficient syntax
-- Structured definitions
-
-### [YAML Version](yaml/)
-- **Standard YAML format**
-- 27.8% token reduction vs Markdown
-- Clean, structured syntax
-- Industry-standard format
-
-## Which Should You Choose?
-
-| Use Case | Recommended | Reason |
-|----------|-------------|--------|
-| Maximum token efficiency | DSL | 37.4% token reduction |
-| Industry standard preference | YAML | Standard format, 27.8% reduction |
-| Simple setup & readability | Markdown | Natural language, baseline |
-| Claude Code beginners | Markdown | Easiest to understand |
-| Structured config preference | YAML | Clean syntax, wide support |
-
-## Performance Comparison
-
-### File Count & Lines
-| Format | File Count | Total Lines | Change |
-|--------|------------|-------------|--------|
-| Markdown | 10 files | 1,264 lines | Baseline |
-| DSL | 30 files | 1,573 lines | **Modular structure** |
-| YAML | 30 files | 1,473 lines | **Efficient modular** |
-
-### Token Usage
-
-#### All Tasks (Full Framework Load)
-| Format | Token Count | Change |
-|--------|-------------|--------|
-| Markdown | ~7,041 tokens | Baseline |
-| YAML | ~5,084 tokens | **27.8% reduction** |
-| DSL | ~4,404 tokens | **37.4% reduction** |
-
-**Note**: All versions load their complete frameworks. DSL achieves best efficiency through syntax optimization.
-
-### Key Differences
-
-| Feature | Markdown Version | DSL Version | YAML Version |
-|---------|------------------|-------------|-------------|
-| **Claude Code Support** | ✅ Auto-loaded | ✅ Auto-loaded | ✅ Auto-loaded |
-| **Setup** | Copy files only | Copy files only | Copy files only |
-| **Readability** | High (natural language) | Structured (learning curve) | High (clean syntax) |
-| **Maintainability** | Distributed file management | Modular DSL management | Standard YAML editing |
-| **Extensibility** | Markdown editing | DSL structure editing | YAML structure editing |
-| **Conditional Logic** | Human judgment dependent | DSL automated processing | Standard YAML processing |
-| **Variables** | ❌ Not supported | ✅ Supported (risk levels, etc.) | ✅ Supported (standard format) |
-| **Token Efficiency** | Baseline (7,041 tokens) | **Best (4,404 tokens)** | Good (5,084 tokens) |
-| **Industry Standard** | ❌ Documentation format | ❌ Custom format | ✅ Widely supported |
-
-## Quick Start
-
-### Markdown Version
 ```bash
-cp markdown/CLAUDE.md your-project/
-cp -r markdown/docs/ your-project/
+git clone https://github.com/username/claude-code-engineering-guide.git
+cd claude-code-engineering-guide
+chmod +x setup-claude-dsl.sh
+./setup-claude-dsl.sh
 ```
 
-### DSL Version
-1. See [dsl/README.md](dsl/README.md) for usage instructions
-2. Load DSL at session start
+Choose your integration method:
+1. **MCP Server (Recommended)** - Auto-load rules on demand, 0 tokens
+2. **Manual DSL Loading** - Copy CLAUDE.md, use 4,404 tokens
 
-### YAML Version
-1. See [yaml/README.md](yaml/README.md) for usage instructions
-2. Load entry-point.yml at session start
+## MCP Server Benefits
+
+| Method | Token Usage | Setup | Real-time Updates |
+|--------|-------------|--------|-------------------|
+| **MCP Server** | **0 tokens** | One-time setup | ✅ Automatic |
+| **Manual DSL** | 4,404 tokens | Per session | ❌ Manual reload |
+| **Markdown** | 7,041 tokens | Per session | ❌ Manual reload |
+
+## Architecture Overview
+
+```
+dsl/
+├── entry-point.dsl          # Main orchestrator
+├── development.dsl          # Development workflow
+├── CLAUDE.md               # Session entry point
+├── behavior-rules/         # Claude's operational behaviors
+├── coding-rules/           # Code quality and standards
+├── design-rules/           # UI/UX and documentation
+├── git-rules/              # Git workflow operations
+├── security-rules/         # Security requirements
+└── validation-rules/       # Correctness verification
+
+mcp-server/                 # MCP server for Claude Desktop
+├── mcp-handler.js          # Main MCP handler
+├── cli.js                  # Command line interface
+└── package.json            # NPM package configuration
+```
+
+## Usage
+
+### With MCP Server (After Setup)
+In Claude Desktop:
+- `@dsl-rules` - List available DSL resources
+- `@dsl-rules claude.md` - Show session instructions
+- `@dsl-rules security-rules` - Show security rules
+- `/apply-dsl-rules` - Apply DSL rules for development
+- `/security-check web_application` - Run security validation
+
+### Manual DSL Loading
+```
+Follow entry-point.dsl for complete DSL execution.
+```
+
+## File Structure Details
+
+### Core Files (Always Loaded)
+- **`CLAUDE.md`** (15 lines) - Mandatory session entry point
+- **`entry-point.dsl`** (247 lines) - Main DSL orchestrator
+- **`development.dsl`** (138 lines) - Development workflow
+
+### Module Categories
+
+#### behavior-rules/ (7 files, 312 lines)
+Claude's operational behaviors and error handling
+
+#### coding-rules/ (4 files, 201 lines)
+Code quality and development standards
+
+#### design-rules/ (3 files, 114 lines)
+UI/UX standards and documentation
+
+#### security-rules/ (5 files, 218 lines)
+Comprehensive security requirements
+
+#### validation-rules/ (4 files, 172 lines)
+Correctness verification and validation
+
+#### git-rules/ (2 files, 54 lines)
+Git workflow and operations
+
+### Support Files
+- **`checklist.dsl`** (25 lines) - Final verification checklist
+- **`app-types.dsl`** (62 lines) - Application type definitions
+- **`risk-assessment.dsl`** (41 lines) - Risk evaluation framework
+
+## Key Features
+
+### 1. MCP Server Integration
+- **Zero token usage**: Rules loaded on-demand
+- **Real-time updates**: File changes apply immediately
+- **Conditional loading**: Task-appropriate rules only
+
+### 2. Modular Rule System
+- **Category organization**: Clear separation of concerns
+- **Cross-references**: Unified variables prevent duplication
+- **Extensible architecture**: Easy to add new categories
+
+### 3. Token Efficiency Comparison
+
+| Version | Files | Lines | Tokens | Efficiency |
+|---------|-------|-------|--------|------------|
+| **MCP Server** | 30 files | 1,573 lines | **0 tokens** | **100% reduction** |
+| **DSL** | 30 files | 1,573 lines | ~4,404 tokens | 37% reduction |
+| **YAML** | 30 files | 1,473 lines | ~5,084 tokens | 28% reduction |
+| **Markdown** | 10 files | 1,264 lines | ~7,041 tokens | Baseline |
+
+## Manual Installation
+
+If the setup script fails:
+
+### MCP Server
+```bash
+cd mcp-server
+npm install
+npm install -g .
+```
+
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "dsl-rules": {
+      "command": "claude-dsl",
+      "args": ["/absolute/path/to/this/repo/dsl"]
+    }
+  }
+}
+```
+
+### Manual DSL
+Copy `dsl/CLAUDE.md` contents and paste into Claude sessions.
+
+## Troubleshooting
+
+### Setup Script Issues
+- **Permission denied**: `chmod +x setup-claude-dsl.sh`
+- **npm errors**: Use `sudo npm install -g .` if needed
+- **Command not found**: Check PATH includes npm global bin
+
+### MCP Server Issues
+```bash
+# Test MCP server
+claude-dsl /path/to/dsl/folder
+
+# Verify installation
+claude-dsl --help
+```
+
+### Claude Desktop Issues
+1. Restart Claude Desktop after config changes
+2. Check config file syntax is valid JSON
+3. Verify DSL folder path is absolute
 
 ## License
 
